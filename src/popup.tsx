@@ -1,3 +1,5 @@
+/* USER INTERFACE WHEN EXTENSION IS CLICKED */
+
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 

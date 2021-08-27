@@ -1,3 +1,5 @@
+/* EXTRA OPTIONS IN CHROME EXTENSION */
+
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
