@@ -36,11 +36,11 @@ const config: Configuration = {
     extensions: [".ts", ".tsx", ".js"],
   },
   plugins: [
+    ScraperPlugin,
     new CopyPlugin({
       patterns: [{ from: ".", to: "../", context: "public" }],
       options: {},
     }),
-    ScraperPlugin,
   ],
 };
 
