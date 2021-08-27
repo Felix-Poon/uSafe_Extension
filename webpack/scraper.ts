@@ -1,9 +1,10 @@
-const fetch = require("node-fetch");
-const { JSDOM } = require("jsdom");
-const { sources } = require("webpack");
+import fetch from "node-fetch";
+import { JSDOM } from "jsdom";
+import type { WebpackPluginInstance } from "webpack";
 
 const name = "ScraperPlugin";
-const ScraperPlugin = {
+
+const ScraperPlugin: WebpackPluginInstance = {
   apply: (compiler) => {
     compiler.hooks.emit.tapPromise(name, async (compilation) => {
       // const response = await fetch(
@@ -30,4 +31,4 @@ const ScraperPlugin = {
   },
 };
 
-module.exports = ScraperPlugin;
+export default ScraperPlugin;

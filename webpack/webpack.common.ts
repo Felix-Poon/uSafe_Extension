@@ -1,11 +1,12 @@
-const webpack = require("webpack");
-const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
+import type { Configuration } from "webpack";
+import path from "path";
+import CopyPlugin from "copy-webpack-plugin";
+
+import ScraperPlugin from "./scraper";
+
 const srcDir = path.join(__dirname, "..", "src");
 
-const ScraperPlugin = require("./scraper");
-
-module.exports = {
+const config: Configuration = {
   entry: {
     popup: path.join(srcDir, "popup.tsx"),
     options: path.join(srcDir, "options.tsx"),
@@ -42,3 +43,5 @@ module.exports = {
     ScraperPlugin,
   ],
 };
+
+export default config;
