@@ -1,4 +1,5 @@
 import "./safety-guide/content_script";
+
 const array = ['Paris', 'France', 'Europe', 'CSS'];
 
 
@@ -40,11 +41,16 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         console.log("nice")
       }
   } else if (msg.blur != undefined) {
-    console.log("BLUR IMAGE CONTENT SCRIPT");
     const imgs = document.getElementsByTagName("img");
-    let img_src:string[] = [];
-    for(var i = 0; i < imgs.length; i++) {
-      img_src.push(imgs[i].src);
+    if (!msg.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
     }
   } else {
     sendResponse("Color message is none.");

@@ -22,7 +22,7 @@ const Popup = () => {
   const [snapshotActive, setSnapshotActive] = useState(true);
   const [censorMode, setCensorMode] = useState(false);
   const [astrixMode, setAstrixMode] = useState(false);
-  const [imgblurMode, setimgblurMode] = useState(true);
+  const [imgblurMode, setimgblurMode] = useState(false);
 
   useEffect(() => {
     if(censorMode === true) {
