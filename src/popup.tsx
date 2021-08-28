@@ -3,14 +3,13 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import ReactDOM from "react-dom";
 import Button from "@atlaskit/button";
-import CameraIcon from '@atlaskit/icon/glyph/camera';
-import WatchIcon from '@atlaskit/icon/glyph/watch';
-import Toggle from '@atlaskit/toggle';
+import CameraIcon from "@atlaskit/icon/glyph/camera";
+import WatchIcon from "@atlaskit/icon/glyph/watch";
+import Toggle from "@atlaskit/toggle";
 // import { Label } from './label';
-import Tooltip from '@atlaskit/tooltip';
-import Textfield from '@atlaskit/textfield';
+import Tooltip from "@atlaskit/tooltip";
+import Textfield from "@atlaskit/textfield";
 import Snapshot from "./snapshot";
-
 
 import scrapePage from "./filter/scrape";
 import blurImages from "./filter/blurImages";
@@ -31,21 +30,21 @@ const Popup = () => {
   }) 
 
   useEffect(() => {
-    if(censorMode === true) {
+    if (censorMode === true) {
       scrapePage();
     }
-  },[censorMode])
+  }, [censorMode]);
 
   useEffect(() => {
-    if(astrixMode === true) {
+    if (astrixMode === true) {
       scrapePage();
     }
-  },[astrixMode])
-  
+  }, [astrixMode]);
+
   const checkProf = () => {
     scrapePage();
-  }
-  
+  };
+
   function click0() {
     setPage(0);
     setSnapshotActive(true);
@@ -61,11 +60,17 @@ const Popup = () => {
     chrome.storage.local.set({'blur':!imgBlur});
     console.log(!imgBlur);
   }
+  const revert = () => {
+    chrome.tabs.query({ active: true }, (tabs) => {
+      chrome.tabs.sendMessage(tabs[0].id!, "revert-filter");
+    });
+  };
 
   return (
     <>
       <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Space+Grotesk:wght@300&display=swap');
+        @import
+        url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Space+Grotesk:wght@300&display=swap');
       </style>
 
       <div className="extension-container">
@@ -80,13 +85,24 @@ const Popup = () => {
                 <label htmlFor="censor">Turn on image blurring</label>
                 <Toggle id="censor" onChange={()=>onChangeblurImage(imgblurMode)} isChecked={imgblurMode} /> <br/>
                 <label htmlFor="astrix">Turn on astrix mode</label>
-                <Toggle id="astrix" onChange={()=>setAstrixMode((prev)=>!prev)}/><br/>
+                <Toggle
+                  id="astrix"
+                  onChange={() => setAstrixMode((prev) => !prev)}
+                />
+                <br />
                 <label htmlFor="paraCensor">Turn on paragraph censorship</label>
-                <Toggle id="paraCensor" defaultChecked/><br/>
-                <label htmlFor="customCensor">Enter custom word to censor</label>
-                <Textfield id="customCensor" placeholder="Enter word"/><br/>
-                <Button appearance="primary" type="button">Add word</Button>
+                <Toggle id="paraCensor" defaultChecked />
+                <br />
+                <label htmlFor="customCensor">
+                  Enter custom word to censor
+                </label>
+                <Textfield id="customCensor" placeholder="Enter word" />
+                <br />
+                <Button appearance="primary" type="button">
+                  Add word
+                </Button>
               </div>
+              <button onClick={revert}>Revert</button>
             </form>
           </>
         ) : (
@@ -96,26 +112,47 @@ const Popup = () => {
       <div className="buttons">
         {snapshotActive ? (
           <>
-          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" isSelected shouldFitContainer>
-            Snapshot
-          </Button>
-          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" shouldFitContainer>
-            Filter
-          </Button>
+            <Button
+              iconBefore={<CameraIcon label="Camera icon" size="small" />}
+              onClick={click0}
+              className="info-button"
+              isSelected
+              shouldFitContainer
+            >
+              Snapshot
+            </Button>
+            <Button
+              iconBefore={<WatchIcon label="Watch icon" size="small" />}
+              onClick={click1}
+              className="snapshot-button"
+              shouldFitContainer
+            >
+              Filter
+            </Button>
           </>
         ) : (
           <>
-          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" shouldFitContainer>
-            Snapshot
-          </Button>
-          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" isSelected shouldFitContainer>
-            Filter
-          </Button>
+            <Button
+              iconBefore={<CameraIcon label="Camera icon" size="small" />}
+              onClick={click0}
+              className="info-button"
+              shouldFitContainer
+            >
+              Snapshot
+            </Button>
+            <Button
+              iconBefore={<WatchIcon label="Watch icon" size="small" />}
+              onClick={click1}
+              className="snapshot-button"
+              isSelected
+              shouldFitContainer
+            >
+              Filter
+            </Button>
           </>
         )}
       </div>
     </>
-  
   );
 };
 
