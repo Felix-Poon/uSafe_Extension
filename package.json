@@ -23,6 +23,7 @@
     "@atlaskit/icon": "^21.8.0",
     "@atlaskit/menu": "^1.1.0",
     "@atlaskit/motion": "^1.0.3",
+    "@atlaskit/tabs": "^13.2.0",
     "@atlaskit/textfield": "^5.1.0",
     "@atlaskit/theme": "^11.5.0",
     "@atlaskit/toggle": "^12.2.2",

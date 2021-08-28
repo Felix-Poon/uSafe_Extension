@@ -97,8 +97,12 @@ const SafetyGuideFlag = ({ href, name }: SafetyGuideFlagProps) => {
                         description={`Learn how to protect yourself and report inappropriate content while browsing ${name}.`}
                         actions={[
                           // View guide opens in new tab
-                          { content: "View Guide", onClick: () => {window.open(href)} },
-                          { content: "Close", onClick: hideFlag },
+                          {
+                            content: "View Guide",
+                            onClick: () => {
+                              window.open(href);
+                            },
+                          },
                         ]}
                         onDismissed={hideFlag}
                       />
