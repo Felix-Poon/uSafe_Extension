@@ -8,10 +8,10 @@ import Textfield from "@atlaskit/textfield";
 import Toggle from "@atlaskit/toggle";
 
 import scrapePage from "./filter/scrape";
-import { h400, h500, headingSizes } from "@atlaskit/theme/typography";
+import { h500, headingSizes } from "@atlaskit/theme/typography";
 
 import { N200 } from "@atlaskit/theme/colors";
-import { fontSize, gridSize } from "@atlaskit/theme/constants";
+import { fontSize } from "@atlaskit/theme/constants";
 
 const labelStyles = css({
   fontSize: `${headingSizes.h200.size / fontSize()}em`,
@@ -108,7 +108,7 @@ const Filter = () => {
           </Button>
         </div>
       </div>
-      <button onClick={revert}>Revert</button>
+      <Button onClick={revert}>Revert</Button>
     </div>
   );
 };

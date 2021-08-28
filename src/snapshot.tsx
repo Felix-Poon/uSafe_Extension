@@ -1,15 +1,15 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Button, { ButtonGroup } from "@atlaskit/button";
-import ReactDOM from "react-dom";
-import { consolidateStreamedStyles } from "styled-components";
 import JSZip from "jszip";
 import { AutoDismissFlag, FlagGroup } from "@atlaskit/flag";
 import SuccessIcon from "@atlaskit/icon/glyph/check-circle";
 import { B300, G300, N0 } from "@atlaskit/theme/colors";
-import { h200, h300, h400, h500, h600 } from "@atlaskit/theme/typography";
+import { h400, h500 } from "@atlaskit/theme/typography";
+
+import Textfield from "@atlaskit/textfield";
 
 interface Screenshot {
   uri: string;
@@ -40,6 +40,9 @@ const liStyles = css([
       fontSize: "12px",
       fontWeight: "bold",
       lineHeight: 0,
+    },
+    ":first-of-type": {
+      marginTop: 0,
     },
   },
 ]);
@@ -196,8 +199,10 @@ const Snapshot = () => {
 
   return (
     <div>
-      <span css={h500()}>Download and report evidence of online abuse.</span>
-      <div>
+      <div css={[h500(), { marginTop: 8 }]}>
+        Download and report evidence of online abuse.
+      </div>
+      <div css={{ marginTop: 24 }}>
         <ol
           css={{
             counterReset: "list",
@@ -218,38 +223,42 @@ const Snapshot = () => {
                   alignItems: "flex-start",
                 }}
               >
-                <Button onClick={() => screenShot()}>Add screenshot</Button>
-                <Button appearance="link" onClick={createTab}>
-                  View saved screenshots
-                </Button>
+                <ButtonGroup>
+                  <Button onClick={() => screenShot()}>Add screenshot</Button>
+                  <Button appearance="link" onClick={createTab}>
+                    View saved screenshots
+                  </Button>
+                </ButtonGroup>
               </div>
             </section>
           </li>
           <li css={liStyles}>
             <section css={sectionStyles}>
               Add the names of people involved.
-              <div className="form-input">
+              <div
+                css={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: 4,
+                  width: 250,
+                }}
+              >
                 {userList.map((e, id) => (
-                  <input type="text" onChange={(e) => handleChange(e, id)} />
+                  <Textfield
+                    key={id}
+                    type="text"
+                    onChange={(e) => handleChange(e, id)}
+                  />
                 ))}
-              </div>
-              <div>
-                <Button
-                  className="name-button"
-                  type="button"
-                  onClick={() => addFormFields()}
-                >
-                  Add name
-                </Button>
+                <Button onClick={addFormFields}>Add name</Button>
               </div>
             </section>
           </li>
           <li css={liStyles}>
             <section css={sectionStyles}>
               Download saved screenshots.
-              <Button className="download-button" onClick={download}>
-                Download All
-              </Button>
+              <Button onClick={download}>Download All</Button>
             </section>
           </li>
           <li css={liStyles}>

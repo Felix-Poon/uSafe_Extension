@@ -1,10 +1,11 @@
 html {
-  background: white;
+  background: rgb(201, 201, 201);
 }
 
 body {
   background: white;
   margin: 0;
+  border-radius: 3px;
 }
 
 .extension-container {

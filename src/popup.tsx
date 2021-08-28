@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { Global, jsx } from "@emotion/core";
 /* USER INTERFACE WHEN EXTENSION IS CLICKED */
 
 import React from "react";
@@ -28,8 +28,15 @@ const PanelContent: React.FC<{}> = ({ children }) => {
 
 const Popup = () => {
   return (
-    <div css={{ width: 500, padding: 8 }}>
+    <div css={{ width: 400, padding: 8 }}>
       <style>{styles}</style>
+      <Global
+        styles={{
+          "html, body": {
+            height: "max-content!important",
+          },
+        }}
+      />
       <Tabs id="features">
         <TabList>
           <IconTab icon={<CameraIcon label="" size="small" />}>
