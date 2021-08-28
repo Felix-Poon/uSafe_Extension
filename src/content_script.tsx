@@ -1,35 +1,5 @@
 
 import { createPopup } from './safety-guide/guideNotification';
-import  MyComponent from './safety-guide/component';
-
-//import DisplayGuide from "./safety-guide/displayGuide";
-/* import React from 'react';
-import MyComponent from "./safety-guide/component";
- */
-
-/* chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.guideLink) {
-    console.log("Receive link = " + msg.guideLink);
-    console.log(msg.guideLink)
-    sendResponse("Link received " + msg.guideLink);
-  } else {
-    sendResponse("No guide");
-  }
-
-  console.log("Hi")
-
-});  */
-
-/* chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.guideLink) {
-    console.log("Receive link = " + msg.guideLink);
-    console.log(msg.guideLink)
-    sendResponse("Link received " + msg.guideLink);
-  } else {
-    sendResponse("No guide");
-  }
-
-}); */
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.color) {
@@ -43,11 +13,11 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     sendResponse("Link received " + msg.guideLink);
 
     const div = createPopup(msg.guideLink);
-    const first = document.body.firstChild;
-    console.log(first, div)
-    document.body.insertBefore(div, first)
+    //const first = document.body.firstChild;
+    //console.log(first, div)
+    //document.body.insertBefore(div, first)
 
-    
+    document.appendChild(div);
 
     /* console.log(document.body)
     document.body. */
@@ -58,3 +28,4 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   }
 });
 
+console.log('hi')

@@ -21,7 +21,7 @@ const FlagPopup = () => {
         id="info"
         key="info"
         title="E-Safety Guide Available!"
-        description="This website"
+        description={`Learn how to protect yourself and report inappropriate content while browsing ${name}.`}
         actions={[
           // View guide opens in new tab
           { content: 'View Guide', onClick: () => {} },

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// LOAD in info
-
 import data from "./safety-guide.json";
 
 function CheckURL({ url }: { url?: string }) {
