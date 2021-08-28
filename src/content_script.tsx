@@ -1,14 +1,23 @@
 //import DisplayGuide from "./safety-guide/displayGuide";
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  if (msg.color) {
-    console.log("Receive color = " + msg.color);
-    document.body.style.backgroundColor = msg.color;
-    sendResponse("Change color to " + msg.color);
+  if (msg.guideLink) {
+    console.log("Receive link = " + msg.guideLink);
+    console.log(msg.guideLink)
+    sendResponse("Link received " + msg.guideLink);
   } else {
-    sendResponse("Color message is none.");
+    sendResponse("No guide");
   }
 
 });
 
-console.log("hey")
+/* chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+  if (msg.guideLink) {
+    console.log("Receive link = " + msg.guideLink);
+    console.log(msg.guideLink)
+    sendResponse("Link received " + msg.guideLink);
+  } else {
+    sendResponse("No guide");
+  }
+
+}); */
