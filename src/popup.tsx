@@ -8,6 +8,9 @@ import { N0, N100 } from "@atlaskit/theme/colors";
 import { e100 } from "@atlaskit/theme/elevation";
 import { borderRadius, gridSize } from "@atlaskit/theme/constants";
 
+import scrapePage from "./filter/scrape";
+import CheckURL from "./safety-guide/checkURL";
+
 const Popup = () => {
   const [count, setCount] = useState(0);
   const [currentURL, setCurrentURL] = useState<string>();
@@ -39,11 +42,20 @@ const Popup = () => {
     });
   };
 
+  const checkProf = () => {
+    console.log("Hello?")
+    scrapePage();
+  }
+
   useLayoutEffect(() => {
     document.documentElement.style.height = "max-content";
     document.body.style.background = N100;
     document.body.style.margin = "0";
   }, []);
+
+  /* const urlCheck = {
+    CheckURL(currentURL: any)
+  } */
 
   return (
     <div
@@ -65,6 +77,8 @@ const Popup = () => {
         count up
       </button>
       <button onClick={changeBackground}>change background</button>
+      <button onClick={checkProf}>Check profanity</button>
+      {CheckURL(currentURL)}
     </div>
   );
 };
