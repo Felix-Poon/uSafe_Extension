@@ -1,4 +1,4 @@
-const array = ['Paris', 'France', 'Europe'];
+const array = ['Paris', 'France', 'Europe', 'CSS'];
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.color) {
@@ -22,13 +22,16 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
                       if (text != null) {
 
-                          node.nodeValue = text.replace(new RegExp(array[i], 'gi'), "Tokyo");
+                          node.nodeValue = text.replace(new RegExp(array[i], 'gi'), "temp");
 
                       }
                   }
               }
           }
       }
+      document.body.innerHTML = document.body.innerHTML.replace(new RegExp("temp", 'gi'),
+          '<span style="background-color: black; color: black;">temp</span>');
+      console.log("nice")
   }
   else {
     sendResponse("Color message is none.");
