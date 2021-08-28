@@ -13,6 +13,7 @@ import Snapshot from "./snapshot";
 
 
 import scrapePage from "./filter/scrape";
+import blurImages from "./filter/blurImages";
 // import CheckURL from "./safety-guide/checkURL";
 
 const Popup = () => {
@@ -21,8 +22,8 @@ const Popup = () => {
   const [snapshotActive, setSnapshotActive] = useState(true);
   const [censorMode, setCensorMode] = useState(false);
   const [astrixMode, setAstrixMode] = useState(false);
-  
-  
+  const [imgblurMode, setimgblurMode] = useState(true);
+
   useEffect(() => {
     if(censorMode === true) {
       scrapePage();
@@ -48,6 +49,12 @@ const Popup = () => {
     setSnapshotActive(false);
   }
 
+  function onChangeblurImage() {
+    setimgblurMode((prev:boolean) => !prev);
+    console.log(imgblurMode);
+    blurImages(imgblurMode);
+  }
+
   return (
     <>
       <style>
@@ -63,6 +70,8 @@ const Popup = () => {
               <div className="form-buttons">
                 <label htmlFor="censor">Turn on censor</label>
                 <Toggle id="censor" defaultChecked onChange={()=>setCensorMode((prev)=>!prev)}/> <br/>
+                <label htmlFor="censor">Turn on image blurring</label>
+                <Toggle id="censor" onChange={onChangeblurImage} isChecked={imgblurMode} /> <br/>
                 <label htmlFor="astrix">Turn on astrix mode</label>
                 <Toggle id="astrix" onChange={()=>setAstrixMode((prev)=>!prev)}/><br/>
                 <label htmlFor="paraCensor">Turn on paragraph censorship</label>
