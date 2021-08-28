@@ -20,6 +20,7 @@
     "@atlaskit/css-reset": "^6.1.2",
     "@atlaskit/flag": "^14.4.0",
     "@atlaskit/menu": "^1.1.0",
+    "@atlaskit/motion": "^1.0.3",
     "@atlaskit/theme": "^11.5.0",
     "@atlaskit/tokens": "^0.1.1",
     "jsdom": "^17.0.0",
