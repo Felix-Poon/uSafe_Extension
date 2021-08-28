@@ -107,8 +107,9 @@ const Snapshot = () => {
     let text_arr:string[] = [];
     let zip:JSZip = new JSZip();
     if (userList.length === 0) {
-      text_arr.push('No user data available');
+      text_arr.push('No name data provided');
     } else {
+      text_arr.push("People invovled in cyber bullying: ")
       let users = userList.join(', ');
       text_arr.push(users);
     }
