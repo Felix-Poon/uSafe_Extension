@@ -139,21 +139,38 @@ const Snapshot = () => {
     chrome.tabs.create({ url: chrome.extension.getURL("screenshots.html") });
   }
 
+  function redirectLink() {
+    window.open('https://www.esafety.gov.au/report');
+  }
+
   return (
     <>
       <form onSubmit={download} className="form">
-        <h5>Download evidence of online harrassment.</h5>
-        <h6>Add the names of users involved. Current date and screenshot will be downloaded automatically.</h6>
-        <div className="form-input">
-          {userList.map((e, id) => (
-            <input type="text" onChange={e => handleChange(e, id)} />
-          ))}
-        </div>
+        <h5>Download and report evidence of online abuse </h5>
         <div className="form-buttons">
-          <Button appearance="primary" type="button" onClick={() => screenShot()}>Add screenshot</Button> <br />
-          <Button appearance="primary" type="button" onClick={() => createTab()}>View screenshots</Button> <br />
-          <Button appearance="primary" type="button" onClick={() => addFormFields()}>Add user</Button> <br />
-          <Button appearance="warning" type="submit">Download All</Button>
+          <div className="section">
+            <h6>1. Take screenshots. Current date and URL will be saved automatically.</h6>
+            <Button className="add-button" type="button" onClick={() => screenShot()}>Add screenshot</Button> <br />
+            <a className="view-button" onClick={() => createTab()}>View saved screenshots</a> <br /> 
+          </div>
+          <div className="section">
+            <h6>2. Add the names of people involved </h6>
+            <div className="form-input">
+              {userList.map((e, id) => (
+                <input type="text" onChange={e => handleChange(e, id)} />
+              ))}
+            </div>
+            <Button className="name-button" type="button" onClick={() => addFormFields()}>Add name</Button> <br />
+          </div>
+          <div className="section">
+            <h6>3. Download all saved screenshots to .zip file</h6>
+            <Button className="download-button" type="submit">Download All</Button>
+          </div>
+          <div className="section">
+            <h6>4. Submit report using the following link:</h6>
+            <a onClick={redirectLink}>https://www.esafety.gov.au/report</a>
+          </div>
+
         </div>
       </form>
     </>
