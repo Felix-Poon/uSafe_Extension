@@ -151,6 +151,7 @@ const Snapshot = () => {
         </div>
         <div className="form-buttons">
           <Button appearance="primary" type="button" onClick={() => screenShot()}>Add screenshot</Button> <br />
+          <Button appearance="primary" type="button" onClick={() => createTab()}>View screenshots</Button> <br />
           <Button appearance="primary" type="button" onClick={() => addFormFields()}>Add user</Button> <br />
           <Button appearance="warning" type="submit">Download All</Button>
         </div>

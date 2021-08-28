@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import Button from "@atlaskit/button";
-import CameraIcon from '@atlaskit/icon/glyph/camera';
-import WatchIcon from '@atlaskit/icon/glyph/watch';
+
+interface Screenshot {
+  uri: string;
+  text: string[];
+}
 
 const Display = () => {
-  const [screenshots, setScreenshots] = useState<string[]>([]);
+  const [screenshots, setScreenshots] = useState<Screenshot[]>([]);
   chrome.storage.local.get('screenshots', function(result){
     if (result.screenshots != undefined) {
       setScreenshots(result.screenshots);
@@ -14,7 +16,7 @@ const Display = () => {
 
   return (
     <>
-      {screenshots.map(uri => <img src={uri} />)}
+      {screenshots.map((s:Screenshot) => <img src={s.uri} />)}
     </>
   );
 };
