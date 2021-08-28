@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "uSafe",
+  "description": "Cyber safety extension",
   "version": "1.0",
 
   "options_ui": {
@@ -11,7 +11,7 @@
   },
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "uSafe_icon.png",
     "default_popup": "popup.html"
   },
 

@@ -15,3 +15,5 @@ const checkURL = (url: string) => {
 };
 
 checkURL(document.location.origin);
+
+console.log(document.location.origin)
