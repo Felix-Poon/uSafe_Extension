@@ -1,6 +1,7 @@
 .extension-container {
-  min-width:300px;
-  min-height:400px;
+  width:300px;
+  height:400px;
+  padding:10px;
 }
 
 .buttons {
@@ -16,6 +17,9 @@
   min-width:100px;
 }
 
+
+/*Snapshot form*/
+
 .form {
   text-align:center;
   display:flex;
@@ -26,31 +30,49 @@
   font-family:'Space Grotesk';
 }
 
-.form-buttons button {
-  margin-bottom:10px;
+.form-buttons button, .form-buttons button:hover {
   color:white !important;
 }
 
-.form-buttons button:hover {
-  color:white !important;
+.add-button {
+  background-color:#05a77d !important;
+  margin-bottom:5px;
+}
+
+.name-button {
+  background-color:#ef476f !important;
+}
+
+.download-button {
+  background-color:#118ab2 !important;
+}
+
+.section {
+  margin:15px 0px;
+}
+
+.form a:hover {
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .form h5, .form h6 {
   font-family:'Space Grotesk';
-  margin: 0;
+  margin:0;
 }
 
 .form h5 {
   font-size:14px;
-  margin-top:10px;
+  margin:0;
 }
 
 .form h6 {
-  margin-bottom:10px;
   font-size:10px;
   color:red;
+  margin:10px 0px 5px 0px;
 }
 
 .form-input input {
   margin-bottom:10px;
 }
+
