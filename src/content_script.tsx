@@ -3,10 +3,15 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log("Receive color = " + msg.color);
     document.body.style.backgroundColor = msg.color;
     sendResponse("Change colorr to " + msg.color);
-  } else {
-    sendResponse("Color message is none.");
-  }
-  if (msg.scrape) {
+  } 
+  else if (msg.scrape) {
+    console.log("scrape msg")
     console.log(document.body.innerText);
+    sendResponse({
+      textBody: document.body.innerText
+    });
+  }
+  else {
+    sendResponse("Color message is none.");
   }
 });
