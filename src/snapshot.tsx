@@ -17,7 +17,6 @@ const Snapshot = () => {
     }
   });
   const [userList, setUserList] = useState<string[]>([]);
-  // const JSZip = require('jszip')();
 
   function handleChange(e: any, id: any) {
     let newList = [...userList];
@@ -28,15 +27,6 @@ const Snapshot = () => {
   function addFormFields() {
     setUserList([...userList, ""]);
   }
-
-// zip.file("Hello.txt", "Hello World\n");
-// var img = zip.folder("images");
-// img.file("smile.gif", imgData, {base64: true});
-// zip.generateAsync({type:"blob"})
-// .then(function(content) {
-//     // see FileSaver.js
-//     saveAs(content, "example.zip");
-// });
 
   function downloadScreenshot(data: string) {
     const link = document.createElement("a");
@@ -132,15 +122,6 @@ const Snapshot = () => {
         link.click();
         document.body.removeChild(link);
       });
-      // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      // element.setAttribute('download', 'data.txt');
-
-      // element.style.display = 'none';
-      // document.body.appendChild(element);
-
-      // element.click();
-
-      // document.body.removeChild(element);
     });
 
     chrome.storage.local.clear();
