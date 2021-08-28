@@ -5,15 +5,11 @@ import ReactDOM from "react-dom";
 import Button from "@atlaskit/button";
 import CameraIcon from '@atlaskit/icon/glyph/camera';
 import WatchIcon from '@atlaskit/icon/glyph/watch';
+import Snapshot from "./snapshot";
 
 const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
-
-  function screenShot() {
-    return;
-  }
-
 
   return (
     <>
@@ -21,9 +17,7 @@ const Popup = () => {
         {page ? (
           <h1>Filter stuff</h1>
         ) : (
-          <>
-          <Button appearance="danger" onClick={screenShot}>Take a screenshot!</Button>
-          </>
+          <Snapshot />
         )}
       </div>
       <div className="buttons">
