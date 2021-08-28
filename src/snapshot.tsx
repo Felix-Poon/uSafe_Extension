@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Button from "@atlaskit/button";
 import ReactDOM from "react-dom";
 import { consolidateStreamedStyles } from "styled-components";
+import JSZip from "jszip";
+import { AutoDismissFlag, FlagGroup } from "@atlaskit/flag";
+import SuccessIcon from '@atlaskit/icon/glyph/check-circle';
+import { G300 } from '@atlaskit/theme/colors'
 
 interface Screenshot {
   uri: string;
@@ -16,6 +20,7 @@ const Snapshot = () => {
     }
   });
   const [userList, setUserList] = useState<string[]>([]);
+  const [flags, setFlags] = useState<number[]>([]);
 
   function handleChange(e: any, id: any) {
     let newList = [...userList];
@@ -36,17 +41,13 @@ const Snapshot = () => {
     document.body.removeChild(link);
   }
 
-  function downloadScreenshots() {
-    chrome.storage.local.get('screenshots', function (result) {
-      let screenshots: string[] = [];
-      if (result.screenshots != undefined) {
-        console.log(result.screenshots);
-        result.screenshots.map((uri: string, index: number) => console.log("index: " + index));
-      }
-      // screenshots.map(uri => downloadScreenshot(uri));
-      chrome.storage.local.clear();
-      setNumScreenshots(0);
-    });
+  function zipScreenshot(data: string, zip:JSZip, filename: string) {
+    zip.file(filename, data.split(",")[1], {base64: true});
+  }
+
+  function zipTextFile(data: string, zip:JSZip) {
+    console.log(data);
+    zip.file("data.txt", data);
   }
 
   function screenShot() {
@@ -61,7 +62,7 @@ const Snapshot = () => {
 
         let text_arr: string[] = [];
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-          text_arr.push((screenshots.length).toString());
+          text_arr.push((screenshots.length).toString()+".jpeg");
           let url_str = tabs[0].url;
           if (url_str) {
             text_arr.push(url_str);
@@ -86,23 +87,29 @@ const Snapshot = () => {
           chrome.storage.local.set({ 'screenshots': screenshots});
           setNumScreenshots(screenshots.length);
           console.log(screenshots);
+          
+          // flags
+          const newFlagId = numScreenshots;
+          const newFlags = flags.slice();
+          newFlags.splice(0, 0, newFlagId);
+          setFlags(newFlags);
         });
       });
     });
   }
 
-  // {
-  //       'screenshots': [
-  //         {'id': 'id', 'uri': "sjdhfkjhsf", "text": "text array containing date and url"}
-  //       ]
-  // }
+  function handleDismiss() {
+    setFlags(flags.slice(1));
+  }
 
   const download = (event:any) => {
     event.preventDefault();
     let text_arr:string[] = [];
+    let zip:JSZip = new JSZip();
     if (userList.length === 0) {
-      text_arr.push('No user data available');
+      text_arr.push('No name data provided');
     } else {
+      text_arr.push("People invovled in cyber bullying: ")
       let users = userList.join(', ');
       text_arr.push(users);
     }
@@ -114,48 +121,76 @@ const Snapshot = () => {
           console.log('whole screenshot');
           const url_data:string = s.text.join(' ');
           text_arr.push(url_data);
-          downloadScreenshot(s.uri);
+          // downloadScreenshot(s.uri);
+          zipScreenshot(s.uri, zip, s.text[0]);
         })
       }
-      
+
       let text = text_arr.join('\n');
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      element.setAttribute('download', 'data.txt');
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
+      zipTextFile(text, zip);
+      zip.generateAsync({type: "base64"}).then(function(content){
+        const link = document.createElement("a");
+        link.download = "evidence.zip";
+        link.href = "data:application/zip;base64," + content;
+        console.log(content);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
     });
 
     chrome.storage.local.clear();
-
+    setNumScreenshots(0);
   }
 
   function createTab() {
     chrome.tabs.create({ url: chrome.extension.getURL("screenshots.html") });
   }
 
+  function redirectLink() {
+    window.open('https://www.esafety.gov.au/report');
+  }
+
   return (
     <>
       <form onSubmit={download} className="form">
-        <h5>Download evidence of online harrassment.</h5>
-        <h6>Add the names of users involved. Current date and screenshot will be downloaded automatically.</h6>
-        <div className="form-input">
-          {userList.map((e, id) => (
-            <input type="text" onChange={e => handleChange(e, id)} />
-          ))}
-        </div>
+        <h5>Download and report evidence of online abuse </h5>
         <div className="form-buttons">
-          <Button appearance="primary" type="button" onClick={() => screenShot()}>Add screenshot</Button> <br />
-          <Button appearance="primary" type="button" onClick={() => createTab()}>View screenshots</Button> <br />
-          <Button appearance="primary" type="button" onClick={() => addFormFields()}>Add user</Button> <br />
-          <Button appearance="warning" type="submit">Download All</Button>
+          <div className="section">
+            <h6>1. Take screenshots. Current date and URL will be saved automatically.</h6>
+            <Button className="add-button" type="button" onClick={() => screenShot()}>Add screenshot</Button> <br />
+            <a className="view-button" onClick={() => createTab()}>View saved screenshots</a> <br /> 
+          </div>
+          <div className="section">
+            <h6>2. Add the names of people involved </h6>
+            <div className="form-input">
+              {userList.map((e, id) => (
+                <input type="text" onChange={e => handleChange(e, id)} />
+              ))}
+            </div>
+            <Button className="name-button" type="button" onClick={() => addFormFields()}>Add name</Button> <br />
+          </div>
+          <div className="section">
+            <h6>3. Download all saved screenshots to .zip file</h6>
+            <Button className="download-button" type="submit">Download All</Button>
+          </div>
+          <div className="section">
+            <h6>4. Submit report using the following link:</h6>
+            <a onClick={redirectLink}>https://www.esafety.gov.au/report</a>
+          </div>
         </div>
       </form>
+      <FlagGroup onDismissed={handleDismiss}>
+        {flags.map((id) => {
+          return (
+            <AutoDismissFlag 
+              id={id}
+              key={id}
+              icon={<SuccessIcon label="Success" primaryColor={G300}/>}
+              title={`Screenshot ${id+1} was taken!`}
+            />);
+        })}
+      </FlagGroup>
     </>
   );
 }

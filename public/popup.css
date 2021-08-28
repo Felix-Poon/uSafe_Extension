@@ -17,13 +17,8 @@
   min-width:100px;
 }
 
-.button-active {
-  color:purple;
-}
 
-.button-inactive {
-  color:white;
-}
+/*Snapshot form*/
 
 .form {
   text-align:center;
@@ -35,32 +30,55 @@
   font-family:'Space Grotesk';
 }
 
-.form-buttons button {
-  margin-bottom:10px;
+.form-buttons button, .form-buttons button:hover {
   color:white !important;
 }
 
-.form-buttons button:hover {
-  color:white !important;
+.add-button {
+  background-color:#4F9D45 !important;
+  margin-bottom:5px;
+}
+
+.name-button {
+  background-color:#e63946 !important;
+}
+
+.download-button {
+  background-color:#457b9d !important;
+}
+
+.section {
+  margin:15px 0px;
+}
+
+.form a:hover {
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .form h5, .form h6 {
   font-family:'Space Grotesk';
-  margin: 0;
+  margin:0;
 }
 
 .form h5 {
   font-size:14px;
-  margin-top:10px;
+  margin:0;
+  color:red;
 }
 
 .form h6 {
-  margin-bottom:10px;
   font-size:10px;
-  color:red;
+  color:rgb(82, 82, 82);
+  margin:10px 0px 5px 0px;
 }
 
 .form-input input {
   margin-bottom:10px;
 }
 
+/* Screenshots page */
+h4 {
+  font-family:'Space Grotesk';
+  text-align:center;
+}
