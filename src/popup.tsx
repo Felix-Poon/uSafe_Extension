@@ -43,7 +43,6 @@ const Popup = () => {
   };
 
   const checkProf = () => {
-    console.log("Hello?")
     scrapePage();
   }
 
