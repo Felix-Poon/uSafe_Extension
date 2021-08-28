@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 import Button from "@atlaskit/button";
 import Textfield from "@atlaskit/textfield";
@@ -37,34 +37,50 @@ const toggleGroupStyles = css({
 });
 
 const Filter = () => {
-  const [censorMode, setCensorMode] = useState(false);
+  const [censorMode, setCensorMode] = useState(true);
   const [astrixMode, setAstrixMode] = useState(false);
+  const [paraMode, setParaMode] = useState(false);
+  const firstLoad = useRef(true);
 
-  const toggleCensorMode = useCallback(() => {
-    setCensorMode((prev) => !prev);
-  }, [setCensorMode]);
+  const [word, setWord] = useState("");
+  const [wordBank, setWordBank] = useState<string[]>([]);
 
-  const toggleAstrixMode = useCallback(() => {
-    setAstrixMode((prev) => !prev);
-  }, [setAstrixMode]);
+  useEffect(() => {
+    console.log(wordBank);
+    scrapePage("censor", wordBank);
+  }, [wordBank]);
 
   useEffect(() => {
     if (censorMode === true) {
-      scrapePage();
+      scrapePage("censor", wordBank);
+    } else {
+      scrapePage("revert", wordBank);
     }
   }, [censorMode]);
 
   useEffect(() => {
-    if (astrixMode === true) {
-      scrapePage();
+    if (firstLoad.current) {
+      firstLoad.current = false;
+    } else {
+      if (astrixMode === true) {
+        scrapePage("astrix", wordBank);
+      } else {
+        scrapePage("revert", wordBank);
+      }
     }
   }, [astrixMode]);
 
-  const revert = useCallback(() => {
-    chrome.tabs.query({ active: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id!, "revert-filter");
-    });
-  }, []);
+  const saveInput = (e: any) => {
+    e.preventDefault();
+    let newWordBank = [...wordBank];
+    newWordBank.push(word);
+    setWordBank(newWordBank);
+    setWord("");
+  };
+
+  const revert = () => {
+    setWordBank([]);
+  };
 
   return (
     <div>

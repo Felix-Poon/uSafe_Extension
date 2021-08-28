@@ -1,7 +1,7 @@
 import React from "react";
 
 import InfoIcon from "@atlaskit/icon/glyph/info";
-import { B300, N500 } from "@atlaskit/theme/colors";
+import { R400, N500 } from "@atlaskit/theme/colors";
 
 import Flag from "@atlaskit/flag";
 import CrossIcon from "@atlaskit/icon/glyph/cross";
@@ -20,12 +20,11 @@ import createCache from "@emotion/cache";
 
 import styles from "@atlaskit/css-reset/dist/bundle.css";
 
-type SafetyGuideFlagProps = {
-  href: string;
-  name: string;
+type WarningFlagProps = {
+  type: string;
 };
 
-const SafetyGuideFlag = ({ href, name }: SafetyGuideFlagProps) => {
+const SafetyGuideFlag = ({ type }: WarningFlagProps) => {
   const [show, setShow] = React.useState(true);
   const [cacheContainer, setCacheContainer] =
     React.useState<HTMLElement | null>(null);
@@ -42,6 +41,18 @@ const SafetyGuideFlag = ({ href, name }: SafetyGuideFlagProps) => {
       });
     }
   }, [cacheContainer]);
+
+  let description = 'Be careful!';
+  let href = 'https://www.esafety.gov.au'
+
+  if (type === 'password') {
+    description = 'This site asks for your password. Make sure it is a trustworthy site before providing it!';
+    href = 'https://www.esafety.gov.au/key-issues/how-to/protect-personal-information';
+  }
+  if (type === 'payment') {
+    description = 'This site seems to ask for payment details. Make sure it is secure and trustworthy before giving any information.';
+    href = 'https://www.esafety.gov.au/key-issues/staying-safe/online-scams-identity-theft';
+  }
 
   return (
     <root.div>
@@ -90,17 +101,18 @@ const SafetyGuideFlag = ({ href, name }: SafetyGuideFlagProps) => {
                         <CrossIcon label="" size="small" />
                       </button>
                       <Flag
-                        icon={<InfoIcon label="Info" primaryColor={B300} />}
-                        id="info"
-                        key="info"
-                        title="E-Safety Guide Available!"
-                        description={`Learn how to protect yourself and report inappropriate content while browsing ${name}.`}
+                        icon={<InfoIcon label="Info" primaryColor={R400} />}
+                        id="warning"
+                        key="warning"
+                        title="Warning!"
+                        description={description}
                         actions={[
                           // View guide opens in new tab
-                          { content: "View Guide", onClick: () => {window.open(href)} },
+                          { content: "More info", onClick: () => {window.open(href)} },
                           { content: "Close", onClick: hideFlag },
                         ]}
                         onDismissed={hideFlag}
+
                       />
                     </div>
                   )}
