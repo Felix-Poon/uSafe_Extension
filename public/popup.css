@@ -35,16 +35,16 @@
 }
 
 .add-button {
-  background-color:#05a77d !important;
+  background-color:#4F9D45 !important;
   margin-bottom:5px;
 }
 
 .name-button {
-  background-color:#ef476f !important;
+  background-color:#e63946 !important;
 }
 
 .download-button {
-  background-color:#118ab2 !important;
+  background-color:#457b9d !important;
 }
 
 .section {
@@ -64,11 +64,12 @@
 .form h5 {
   font-size:14px;
   margin:0;
+  color:red;
 }
 
 .form h6 {
   font-size:10px;
-  color:red;
+  color:rgb(82, 82, 82);
   margin:10px 0px 5px 0px;
 }
 
@@ -76,3 +77,8 @@
   margin-bottom:10px;
 }
 
+/* Screenshots page */
+h4 {
+  font-family:'Space Grotesk';
+  text-align:center;
+}
