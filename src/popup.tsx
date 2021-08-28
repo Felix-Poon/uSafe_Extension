@@ -29,7 +29,7 @@ const Popup = () => {
         chrome.tabs.sendMessage(
           tab.id,
           {
-            color: "#555555",
+            color: "red",
           },
           (msg) => {
             console.log("result message:", msg);
@@ -55,7 +55,7 @@ const Popup = () => {
       }}
     >
       <ul style={{ minWidth: "700px" }}>
-        <li>Current URL: {currentURL}</li>
+        <li>Current URL233: {currentURL}</li>
         <li>Current Time: {new Date().toLocaleTimeString()}</li>
       </ul>
       <button
