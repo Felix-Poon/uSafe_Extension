@@ -10,6 +10,10 @@ const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
 
+  function screenShot() {
+    return;
+  }
+
 
   return (
     <>
@@ -17,7 +21,9 @@ const Popup = () => {
         {page ? (
           <h1>Filter stuff</h1>
         ) : (
-          <h1>Snapshot stuff</h1>
+          <>
+          <Button appearance="danger" onClick={screenShot}>Take a screenshot!</Button>
+          </>
         )}
       </div>
       <div className="buttons">

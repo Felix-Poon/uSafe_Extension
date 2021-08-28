@@ -1,6 +1,6 @@
 .extension-container {
-  min-width:400px;
-  min-height:500px;
+  min-width:300px;
+  min-height:400px;
 }
 
 .buttons {
@@ -15,4 +15,3 @@
 .buttons button {
   min-width:100px;
 }
-
