@@ -39,7 +39,6 @@ const toggleGroupStyles = css({
 const Filter = () => {
   const [censorMode, setCensorMode] = useState(true);
   const [astrixMode, setAstrixMode] = useState(false);
-  const [paraMode, setParaMode] = useState(false);
   const firstLoad = useRef(true);
 
   const [word, setWord] = useState("");
@@ -117,17 +116,16 @@ const Filter = () => {
           <Toggle id="astrix" onChange={toggleAstrixMode} />
         </div>
         <div css={toggleGroupStyles}>
-          <label htmlFor="paraCensor" css={labelStyles}>
-            Paragraph censorship
-          </label>
-          <Toggle id="paraCensor" defaultChecked />
-        </div>
-        <div css={toggleGroupStyles}>
           <label htmlFor="customCensor" css={labelStyles}>
             Enter custom word to censor
           </label>
-          <Textfield id="customCensor" placeholder="Enter word" />
-          <Button appearance="primary" type="button">
+          <Textfield
+            id="customCensor"
+            placeholder="Enter word"
+            value={word}
+            onChange={(e) => setWord((e.target as HTMLInputElement).value)}
+          />
+          <Button appearance="primary" onClick={saveInput}>
             Add word
           </Button>
         </div>
