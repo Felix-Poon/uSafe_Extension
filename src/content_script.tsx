@@ -6,9 +6,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   } 
   else if (msg.scrape) {
     console.log("scrape msg")
-    console.log(document.body.innerText);
+    console.log(document.getElementsByTagName('*'))
     sendResponse({
-      textBody: document.body.innerHTML
+      textBody: document.body.getElementsByTagName("*")
     });
   }
   else {
