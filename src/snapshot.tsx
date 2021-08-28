@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@atlaskit/button";
 import ReactDOM from "react-dom";
 import { consolidateStreamedStyles } from "styled-components";
+import JSZip from "jszip";
 
 interface Screenshot {
   uri: string;
@@ -16,6 +17,7 @@ const Snapshot = () => {
     }
   });
   const [userList, setUserList] = useState<string[]>([]);
+  // const JSZip = require('jszip')();
 
   function handleChange(e: any, id: any) {
     let newList = [...userList];
@@ -27,6 +29,15 @@ const Snapshot = () => {
     setUserList([...userList, ""]);
   }
 
+// zip.file("Hello.txt", "Hello World\n");
+// var img = zip.folder("images");
+// img.file("smile.gif", imgData, {base64: true});
+// zip.generateAsync({type:"blob"})
+// .then(function(content) {
+//     // see FileSaver.js
+//     saveAs(content, "example.zip");
+// });
+
   function downloadScreenshot(data: string) {
     const link = document.createElement("a");
     link.download = "screenshot";
@@ -34,6 +45,15 @@ const Snapshot = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  function zipScreenshot(data: string, zip:JSZip, filename: string) {
+    zip.file(filename, data.split(",")[1], {base64: true});
+  }
+
+  function zipTextFile(data: string, zip:JSZip) {
+    console.log(data);
+    zip.file("data.txt", data);
   }
 
   function screenShot() {
@@ -48,7 +68,7 @@ const Snapshot = () => {
 
         let text_arr: string[] = [];
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-          text_arr.push((screenshots.length).toString());
+          text_arr.push((screenshots.length).toString()+".jpeg");
           let url_str = tabs[0].url;
           if (url_str) {
             text_arr.push(url_str);
@@ -81,6 +101,7 @@ const Snapshot = () => {
   const download = (event:any) => {
     event.preventDefault();
     let text_arr:string[] = [];
+    let zip:JSZip = new JSZip();
     if (userList.length === 0) {
       text_arr.push('No user data available');
     } else {
@@ -95,21 +116,31 @@ const Snapshot = () => {
           console.log('whole screenshot');
           const url_data:string = s.text.join(' ');
           text_arr.push(url_data);
-          downloadScreenshot(s.uri);
+          // downloadScreenshot(s.uri);
+          zipScreenshot(s.uri, zip, s.text[0]);
         })
       }
 
       let text = text_arr.join('\n');
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      element.setAttribute('download', 'data.txt');
+      zipTextFile(text, zip);
+      zip.generateAsync({type: "base64"}).then(function(content){
+        const link = document.createElement("a");
+        link.download = "evidence.zip";
+        link.href = "data:application/zip;base64," + content;
+        console.log(content);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+      // element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      // element.setAttribute('download', 'data.txt');
 
-      element.style.display = 'none';
-      document.body.appendChild(element);
+      // element.style.display = 'none';
+      // document.body.appendChild(element);
 
-      element.click();
+      // element.click();
 
-      document.body.removeChild(element);
+      // document.body.removeChild(element);
     });
 
     chrome.storage.local.clear();
