@@ -29,10 +29,6 @@ const Popup = () => {
     setSnapshotActive(false);
   }
 
-  /* const urlCheck = {
-    CheckURL(currentURL: any)
-  } */
-
   return (
     <>
       <style>

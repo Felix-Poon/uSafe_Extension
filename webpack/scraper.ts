@@ -9,6 +9,8 @@ import { URL } from "url";
 
 import queue from "async-delay-queue";
 
+import type { GuideData, GuideEntry } from "../src/safety-guide/types";
+
 const name = "ScraperPlugin";
 
 const fileName = "safety-guide.json";
@@ -66,12 +68,6 @@ const getWebsite = (document: Document): string | null => {
   return websiteLink.href;
 };
 
-type GuideEntry = {
-  guideUrl: string;
-  websiteUrl: string;
-  title: string | null;
-};
-
 const pageItemSelector = "a.c-guide-tile";
 const getPageItems = async function* (
   cache: GuideData,
@@ -103,7 +99,7 @@ const getPageItems = async function* (
         const entry = {
           guideUrl: url.href,
           websiteUrl,
-          title: document.querySelector("h1")?.textContent ?? null,
+          title: document.querySelector("h1")?.textContent ?? "",
         };
         cache.entries[entry.websiteUrl] = entry;
         await writeJSON(cache);
@@ -130,13 +126,6 @@ const getEntries = async function* (
 
     curPage++;
   } while (curPage < numPages);
-};
-
-type GuideData = {
-  ignored: string[];
-  entries: {
-    [websiteUrl: string]: GuideEntry;
-  };
 };
 
 const getSafetyGuideData = async (cache: GuideData): Promise<GuideData> => {

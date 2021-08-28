@@ -1,4 +1,6 @@
+import "./safety-guide/content_script";
 const array = ['Paris', 'France', 'Europe', 'CSS'];
+
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.color) {
@@ -37,3 +39,5 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     sendResponse("Color message is none.");
   }
 });
+
+console.log("hi");
