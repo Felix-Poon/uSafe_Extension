@@ -8,8 +8,6 @@ import { N0, N100 } from "@atlaskit/theme/colors";
 import { e100 } from "@atlaskit/theme/elevation";
 import { borderRadius, gridSize } from "@atlaskit/theme/constants";
 
-import CheckURL from "./safety-guide/checkURL";
-
 const Popup = () => {
   const [count, setCount] = useState(0);
   const [currentURL, setCurrentURL] = useState<string>();
@@ -21,7 +19,6 @@ const Popup = () => {
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       setCurrentURL(tabs[0].url);
-      // CheckURL(tabs[0].url)
     });
   }, []);
 
@@ -68,7 +65,6 @@ const Popup = () => {
         count up
       </button>
       <button onClick={changeBackground}>change background</button>
-      <CheckURL url={currentURL} />
     </div>
   );
 };
