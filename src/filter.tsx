@@ -131,7 +131,7 @@ const Filter = () => {
         </div>
         <div css={toggleGroupStyles}>
           <label htmlFor="astrix" css={labelStyles}>
-            Astrix mode
+            Asterisk mode
           </label>
           <Toggle
             id="astrix"
