@@ -5,14 +5,40 @@ import ReactDOM from "react-dom";
 import Button from "@atlaskit/button";
 import CameraIcon from '@atlaskit/icon/glyph/camera';
 import WatchIcon from '@atlaskit/icon/glyph/watch';
+import Toggle from '@atlaskit/toggle';
+// import { Label } from './label';
+import Tooltip from '@atlaskit/tooltip';
+import Textfield from '@atlaskit/textfield';
 import Snapshot from "./snapshot";
 
+
+import scrapePage from "./filter/scrape";
+// import CheckURL from "./safety-guide/checkURL";
 
 const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
   const [snapshotActive, setSnapshotActive] = useState(true);
+  const [censorMode, setCensorMode] = useState(false);
+  const [astrixMode, setAstrixMode] = useState(false);
+  
+  
+  useEffect(() => {
+    if(censorMode === true) {
+      scrapePage();
+    }
+  },[censorMode])
 
+  useEffect(() => {
+    if(astrixMode === true) {
+      scrapePage();
+    }
+  },[astrixMode])
+  
+  const checkProf = () => {
+    scrapePage();
+  }
+  
   function click0() {
     setPage(0);
     setSnapshotActive(true);
@@ -30,7 +56,23 @@ const Popup = () => {
 
       <div className="extension-container">
         {page ? (
-          <h1></h1>
+          <>
+            <form className="form">
+              <h5>Filter away profanity and negativity</h5>
+              <h6>Toggle to show/hide</h6>
+              <div className="form-buttons">
+                <label htmlFor="censor">Turn on censor</label>
+                <Toggle id="censor" defaultChecked onChange={()=>setCensorMode((prev)=>!prev)}/> <br/>
+                <label htmlFor="astrix">Turn on astrix mode</label>
+                <Toggle id="astrix" onChange={()=>setAstrixMode((prev)=>!prev)}/><br/>
+                <label htmlFor="paraCensor">Turn on paragraph censorship</label>
+                <Toggle id="paraCensor" defaultChecked/><br/>
+                <label htmlFor="customCensor">Enter custom word to censor</label>
+                <Textfield id="customCensor" placeholder="Enter word"/><br/>
+                <Button appearance="primary" type="button">Add word</Button>
+              </div>
+            </form>
+          </>
         ) : (
           <Snapshot />
         )}

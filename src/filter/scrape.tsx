@@ -29,7 +29,7 @@ export default function scrapePage () {
     if (tab.id) {
       chrome.tabs.sendMessage(tab.id,
       {
-        scrape: true
+        scrape: "normal"
       }, function(response) {
         // response?
         console.log("hasdfa")
