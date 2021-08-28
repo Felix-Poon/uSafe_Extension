@@ -45,6 +45,14 @@ const Filter = () => {
   const [word, setWord] = useState("");
   const [wordBank, setWordBank] = useState<string[]>([]);
 
+  const toggleCensorMode = useCallback(() => {
+    setCensorMode((prev) => !prev);
+  }, [setCensorMode]);
+
+  const toggleAstrixMode = useCallback(() => {
+    setAstrixMode((prev) => !prev);
+  }, [setAstrixMode]);
+
   useEffect(() => {
     console.log(wordBank);
     scrapePage("censor", wordBank);
