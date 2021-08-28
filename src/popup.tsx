@@ -13,6 +13,10 @@ const Popup = () => {
 
   return (
     <>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Space+Grotesk:wght@300&display=swap');
+      </style>
+
       <div className="extension-container">
         {page ? (
           <h1>Filter stuff</h1>

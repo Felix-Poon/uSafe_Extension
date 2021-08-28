@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Button from "@atlaskit/button";
 import CameraIcon from '@atlaskit/icon/glyph/camera';
 import WatchIcon from '@atlaskit/icon/glyph/watch';
-import Snapshot from "./snapshot";
 
 const Display = () => {
   const [screenshots, setScreenshots] = useState<string[]>([]);
