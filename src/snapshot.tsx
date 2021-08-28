@@ -3,7 +3,9 @@ import Button from "@atlaskit/button";
 import ReactDOM from "react-dom";
 import { consolidateStreamedStyles } from "styled-components";
 import JSZip from "jszip";
-import { AutoDismissFlag, FlagGroup } from "@atlaskit/flag"
+import { AutoDismissFlag, FlagGroup } from "@atlaskit/flag";
+import SuccessIcon from '@atlaskit/icon/glyph/check-circle';
+import { G300 } from '@atlaskit/theme/colors'
 
 interface Screenshot {
   uri: string;
@@ -183,9 +185,8 @@ const Snapshot = () => {
             <AutoDismissFlag 
               id={id}
               key={id}
-              icon={<h1>#</h1>}
-              title={`${id+1} Screenshot(s) was taken!`}
-              description="I will disappear in 8 seconds"
+              icon={<SuccessIcon label="Success" primaryColor={G300}/>}
+              title={`Screenshot ${id+1} was taken!`}
             />);
         })}
       </FlagGroup>
