@@ -1,3 +1,22 @@
+import { red } from "@atlaskit/theme/dist/types/colors";
+
+const badWords = [
+  "abbo",
+  "abo",
+  "abortion",
+  "abuse",
+  "addict",
+  "addicts",
+  "adult",
+  "africa",
+  "african",
+  "alla",
+  "allah",
+  "sht",
+  "shit",
+  "fuck"
+]
+
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   if (msg.color) {
     console.log("Receive color = " + msg.color);
@@ -9,7 +28,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log(document.getElementsByTagName('*'))
     sendResponse({
       textBody: document.body.getElementsByTagName("*")
-    });
+    });   
   }
   else {
     sendResponse("Color message is none.");
