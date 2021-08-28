@@ -8,11 +8,27 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
   } 
   else if (msg.scrape) {
 
-      for (let i = 0; i < array.length; i++) {
-          //document.body.innerHTML = document.body.innerHTML.replace(new RegExp(array[i], 'gi'), '<span style="color: red;">replacement</span>');
-          document.body.innerHTML = document.body.innerHTML.replace(new RegExp(array[i], 'gi'), 'Tokyo');
-      }
+      var elements = document.getElementsByTagName('*');
 
+      for (var i = 0; i < elements.length; i++) {
+          var element = elements[i];
+
+          for (var j = 0; j < element.childNodes.length; j++) {
+              var node = element.childNodes[j];
+
+              if (node.nodeType === 3) {
+                  for (let i = 0; i < array.length; i++) {
+                      var text = node.nodeValue;
+
+                      if (text != null) {
+
+                          node.nodeValue = text.replace(new RegExp(array[i], 'gi'), "Tokyo");
+
+                      }
+                  }
+              }
+          }
+      }
   }
   else {
     sendResponse("Color message is none.");
