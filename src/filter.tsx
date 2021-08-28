@@ -99,6 +99,7 @@ const Filter = () => {
 
   const saveInput = (e: any) => {
     e.preventDefault();
+    console.log("PUSHING WORD", word);
     let newWordBank = [...wordBank];
     newWordBank.push(word);
     setWordBank(newWordBank);
@@ -152,21 +153,27 @@ const Filter = () => {
           <label htmlFor="customCensor" css={labelStyles}>
             Enter custom word to censor
           </label>
-          <div
-            css={{ display: "grid", gridTemplateColumns: "250px auto", gap: 4 }}
-          >
-            <Textfield
-              id="customCensor"
-              placeholder="Enter word"
-              value={word}
-              width={250}
-              onChange={(e) => setWord((e.target as HTMLInputElement).value)}
-              isCompact
-            />
-            <Button appearance="primary" onClick={saveInput}>
-              Add word
-            </Button>
-          </div>
+          <form onSubmit={saveInput}>
+            <div
+              css={{
+                display: "grid",
+                gridTemplateColumns: "250px auto",
+                gap: 4,
+              }}
+            >
+              <Textfield
+                id="customCensor"
+                placeholder="Enter word"
+                value={word}
+                width={250}
+                onChange={(e) => setWord((e.target as HTMLInputElement).value)}
+                isCompact
+              />
+              <Button appearance="primary" type="submit">
+                Add word
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
