@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import MyComponent from "./component";
-import FlagPopup from "./flag";
 
-export function createPopup(link: string/* , name: string */) {
-  const root = document.createElement('div')
+import type { GuideEntry } from "./types";
+import SafetyGuideFlag from "./flag";
 
-  ReactDOM.render(<FlagPopup />, root);
+export function createPopup(entry: GuideEntry) {
+  const root = document.createElement("div");
+  document.body.appendChild(root);
 
-
-
-  return root;
+  ReactDOM.render(
+    <SafetyGuideFlag href={entry.guideUrl} name={entry.title} />,
+    root
+  );
 }
