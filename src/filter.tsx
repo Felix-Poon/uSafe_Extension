@@ -60,13 +60,6 @@ const Filter = () => {
     blurImages(imgblurMode);
   }, [imgblurMode]);
 
-  // function onChangeblurImage(imgBlur: boolean) {
-  //   setimgblurMode(!imgBlur);
-  //   blurImages(!imgBlur);
-  //   chrome.storage.local.set({ blur: !imgBlur });
-  //   console.log(!imgBlur);
-  // }
-
   const toggleImageBlurring = useCallback(() => {
     setimgblurMode((prev) => !prev);
   }, [setimgblurMode]);
@@ -112,10 +105,6 @@ const Filter = () => {
     setWord("");
   };
 
-  const revert = () => {
-    setWordBank([]);
-  };
-
   return (
     <div>
       <div css={[h500(), { marginTop: 8 }]}>
@@ -123,7 +112,7 @@ const Filter = () => {
       </div>
       <div
         css={{
-          padding: "24px 0",
+          marginTop: 24,
           display: "flex",
           flexDirection: "column",
           gap: 8,
@@ -138,7 +127,6 @@ const Filter = () => {
             isChecked={censorMode}
             onChange={toggleCensorMode}
           />
-          <small>Some explanation...</small>
         </div>
         <div css={toggleGroupStyles}>
           <label htmlFor="astrix" css={labelStyles}>
@@ -151,7 +139,9 @@ const Filter = () => {
           />
         </div>
         <div css={toggleGroupStyles}>
-          <label htmlFor="censor">Turn on image blurring</label>
+          <label htmlFor="censor" css={labelStyles}>
+            Turn on image blurring
+          </label>
           <Toggle
             id="censor"
             isChecked={imgblurMode}
@@ -162,18 +152,23 @@ const Filter = () => {
           <label htmlFor="customCensor" css={labelStyles}>
             Enter custom word to censor
           </label>
-          <Textfield
-            id="customCensor"
-            placeholder="Enter word"
-            value={word}
-            onChange={(e) => setWord((e.target as HTMLInputElement).value)}
-          />
-          <Button appearance="primary" onClick={saveInput}>
-            Add word
-          </Button>
+          <div
+            css={{ display: "grid", gridTemplateColumns: "250px auto", gap: 4 }}
+          >
+            <Textfield
+              id="customCensor"
+              placeholder="Enter word"
+              value={word}
+              width={250}
+              onChange={(e) => setWord((e.target as HTMLInputElement).value)}
+              isCompact
+            />
+            <Button appearance="primary" onClick={saveInput}>
+              Add word
+            </Button>
+          </div>
         </div>
       </div>
-      <Button onClick={revert}>Revert</Button>
     </div>
   );
 };

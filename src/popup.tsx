@@ -28,7 +28,7 @@ const PanelContent: React.FC<{}> = ({ children }) => {
 
 const Popup = () => {
   return (
-    <div css={{ width: 400, padding: 8 }}>
+    <div css={{ width: 380, padding: 8 }}>
       <style>{styles}</style>
       <Global
         styles={{
