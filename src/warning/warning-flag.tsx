@@ -83,7 +83,7 @@ const SafetyGuideFlag = ({ type }: WarningFlagProps) => {
                         description={description}
                         actions={[
                           // View guide opens in new tab
-                          { content: "More info", href },
+                          { content: "More info", onClick: () => {window.open(href)} },
                           { content: "Close", onClick: hideFlag },
                         ]}
                         onDismissed={hideFlag}
