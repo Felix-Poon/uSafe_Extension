@@ -11,6 +11,16 @@ import Snapshot from "./snapshot";
 const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
+  const [snapshotActive, setSnapshotActive] = useState(true);
+
+  function click0() {
+    setPage(0);
+    setSnapshotActive(true);
+  }
+  function click1() {
+    setPage(1);
+    setSnapshotActive(false);
+  }
 
   return (
     <>
@@ -20,19 +30,31 @@ const Popup = () => {
 
       <div className="extension-container">
         {page ? (
-          <h1>Filter stuff</h1>
+          <h1></h1>
         ) : (
           <Snapshot />
         )}
       </div>
       <div className="buttons">
-        <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={() => setPage(0)} className="info-button">
-          Snapshot
-        </Button>
-        <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={() => setPage(1)} className="snapshot-button">
-          Filter
-        </Button>
-
+        {snapshotActive ? (
+          <>
+          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" isSelected shouldFitContainer>
+            Snapshot
+          </Button>
+          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" shouldFitContainer>
+            Filter
+          </Button>
+          </>
+        ) : (
+          <>
+          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" shouldFitContainer>
+            Snapshot
+          </Button>
+          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" isSelected shouldFitContainer>
+            Filter
+          </Button>
+          </>
+        )}
       </div>
     </>
   
