@@ -159,7 +159,7 @@ const Snapshot = () => {
     if (userList.length === 0) {
       text_arr.push("No name data provided");
     } else {
-      text_arr.push("People invovled in cyber bullying: ");
+      text_arr.push("Names of people involved: ");
       let users = userList.join(", ");
       text_arr.push(users);
     }

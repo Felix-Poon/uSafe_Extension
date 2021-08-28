@@ -2,6 +2,21 @@ import "./safety-guide/content_script";
 import scrapePage from "./filter/scrape";
 import "./warning/content_script";
 
+chrome.storage.local.get('blur', function(storage) {
+  if (storage.blur != undefined) {
+    const imgs = document.getElementsByTagName("img");
+    if (storage.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
+    }
+  }
+}) 
 const array2 = [
   "fuck boy",
   "fuckstick",
@@ -40,7 +55,7 @@ const array2 = [
 ];
 
 const censor = (censorMode: string, array: string[]) => {
-  console.log("feed array", array);
+  console.log(censorMode)
   var elements = document.getElementsByTagName("*");
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
@@ -57,14 +72,15 @@ const censor = (censorMode: string, array: string[]) => {
 
             parent?.setAttribute?.("data-original-text", node.nodeValue ?? "");
 
-            if (parent?.tagName === "body") {
-              console.log({ node });
-            }
+            // if (parent?.tagName === "body") {
+            //   console.log({ node });
+            // }
 
             node.nodeValue = text.replace(new RegExp(array[i], "gi"), "***");
           }
         }
       }
+      
     }
   }
   if (censorMode === "normal") {
@@ -72,24 +88,40 @@ const censor = (censorMode: string, array: string[]) => {
     style.id = "filter-styles";
     style.textContent = `[data-original-text] { background-color: black; color: black; }`;
     document.head.appendChild(style);
-  }
+  } 
 };
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  console.log("scraping?");
-  if (msg.scrape) {
-    console.log("msg3", msg.array);
+  if (msg.scrape === "revert-filter") {
+    document.querySelectorAll("[data-original-text]").forEach((element) => {
+      element.textContent = (element.textContent ?? "").replace(
+        /\*\*\*/,
+        element.getAttribute("data-original-text") ?? ""
+      );
+      element.removeAttribute("data-original-text");
+    });
+  }
+  else if (msg.scrape === "normal") {
+    // console.log("msg3", msg.array);
     const array = array2.concat(msg.array);
-    console.log("array", array);
+    // console.log("array", array);
     censor(msg.scrape, array);
-    if (msg.scrape === "revert-filter") {
-      document.querySelectorAll("[data-original-text]").forEach((element) => {
-        element.textContent = (element.textContent ?? "").replace(
-          /\*\*\*/,
-          element.getAttribute("data-original-text") ?? ""
-        );
-        element.removeAttribute("data-original-text");
-      });
+  } else if (msg.scrape === "astrix") {
+    console.log("but im a astrix")
+    const array = array2.concat(msg.array);
+    // console.log("array", array);
+    censor(msg.scrape, array);
+  } else if (msg.blur != undefined) {
+    const imgs = document.getElementsByTagName("img");
+    if (msg.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
     }
   }
 });

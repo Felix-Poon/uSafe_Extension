@@ -43,6 +43,19 @@ const Filter = () => {
 
   const [word, setWord] = useState("");
   const [wordBank, setWordBank] = useState<string[]>([]);
+  const [imgblurMode, setimgblurMode] = useState(false);
+  chrome.storage.local.get("blur", function (storage) {
+    if (storage.blur != undefined) {
+      setimgblurMode(storage.blur);
+      blurImages(storage.blur);
+    }
+  });
+  function onChangeblurImage(imgBlur: boolean) {
+    setimgblurMode(!imgBlur);
+    blurImages(!imgBlur);
+    chrome.storage.local.set({ blur: !imgBlur });
+    console.log(!imgBlur);
+  }
 
   const toggleCensorMode = useCallback(() => {
     setCensorMode((prev) => !prev);
@@ -114,6 +127,14 @@ const Filter = () => {
             Astrix mode
           </label>
           <Toggle id="astrix" onChange={toggleAstrixMode} />
+        </div>
+        <div css={toggleGroupStyles}>
+          <label htmlFor="censor">Turn on image blurring</label>
+          <Toggle
+            id="censor"
+            defaultChecked
+            onChange={() => setCensorMode((prev) => !prev)}
+          />
         </div>
         <div css={toggleGroupStyles}>
           <label htmlFor="customCensor" css={labelStyles}>

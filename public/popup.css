@@ -93,3 +93,7 @@ h4 {
   font-family: "Space Grotesk";
   text-align: center;
 }
+
+.blur {
+  filter: blue(30px);
+}
