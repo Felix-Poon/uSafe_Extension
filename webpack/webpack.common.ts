@@ -12,6 +12,7 @@ const config: Configuration = {
     options: path.join(srcDir, "options.tsx"),
     background: path.join(srcDir, "background.ts"),
     content_script: path.join(srcDir, "content_script.tsx"),
+    display: path.join(srcDir, 'display.tsx'),
   },
   output: {
     path: path.join(__dirname, "../dist/js"),
