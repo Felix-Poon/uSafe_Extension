@@ -41,12 +41,15 @@ const config: Configuration = {
     extensions: [".ts", ".tsx", ".js"],
   },
   plugins: [
-    ScraperPlugin,
+    // ScraperPlugin,
     new CopyPlugin({
       patterns: [{ from: ".", to: "../", context: "public" }],
       options: {},
     }),
   ],
+  watchOptions: {
+    ignored: ["../public/safety-guide.json"],
+  },
 };
 
 export default config;
