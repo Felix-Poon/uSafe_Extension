@@ -97,40 +97,40 @@ const Snapshot = () => {
   //       ]
   // }
 
-  function download() {
+  const download = (event:any) => {
+    event.preventDefault();
     let text_arr:string[] = [];
-    let users = userList.join(', ');
-    text_arr.push(users);
+    if (userList.length === 0) {
+      text_arr.push('No user data available');
+    } else {
+      let users = userList.join(', ');
+      text_arr.push(users);
+    }
 
     chrome.storage.local.get('screenshots', function(result){
-      console.log(result);
+      console.log('finished get');
       if (result.screenshots != undefined) {
-        console.log(result);
         result.screenshots.map( (s: Screenshot) => {
+          console.log('whole screenshot');
           const url_data:string = s.text.join(' ');
-          console.log(s.text);
           text_arr.push(url_data);
-          // downloadScreenshot(s.uri);
+          downloadScreenshot(s.uri);
         })
       }
-      console.log(result);
+      
+      let text = text_arr.join('\n');
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', 'data.txt');
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
     });
 
-    
-    //Downloads all screenshots and user list 
-
-    let text = text_arr.join('\n');
-    console.log(text);
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', 'data.txt');
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    // element.click();
-
-    document.body.removeChild(element);
     chrome.storage.local.clear();
 
   }
