@@ -2,6 +2,21 @@ import "./safety-guide/content_script";
 import scrapePage from "./filter/scrape";
 import "./warning/content_script";
 
+chrome.storage.local.get('blur', function(storage) {
+  if (storage.blur != undefined) {
+    const imgs = document.getElementsByTagName("img");
+    if (storage.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
+    }
+  }
+}) 
 const array2 = [
   "fuck boy",
   "fuckstick",
@@ -65,6 +80,7 @@ const censor = (censorMode: string, array: string[]) => {
           }
         }
       }
+      
     }
   }
   if (censorMode === "normal") {
@@ -72,7 +88,7 @@ const censor = (censorMode: string, array: string[]) => {
     style.id = "filter-styles";
     style.textContent = `[data-original-text] { background-color: black; color: black; }`;
     document.head.appendChild(style);
-  }
+  } 
 };
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
@@ -86,7 +102,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     });
   }
   else if (msg.scrape === "normal") {
-    
     // console.log("msg3", msg.array);
     const array = array2.concat(msg.array);
     // console.log("array", array);
@@ -96,6 +111,18 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     const array = array2.concat(msg.array);
     // console.log("array", array);
     censor(msg.scrape, array);
+  } else if (msg.blur != undefined) {
+    const imgs = document.getElementsByTagName("img");
+    if (msg.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
+    }
   }
 });
 

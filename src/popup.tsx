@@ -12,6 +12,7 @@ import Textfield from "@atlaskit/textfield";
 import Snapshot from "./snapshot";
 
 import scrapePage from "./filter/scrape";
+import blurImages from "./filter/blurImages";
 // import CheckURL from "./safety-guide/checkURL";
 
 const Popup = () => {
@@ -20,6 +21,14 @@ const Popup = () => {
   const [snapshotActive, setSnapshotActive] = useState(true);
   const [censorMode, setCensorMode] = useState(true);
   const [astrixMode, setAstrixMode] = useState(false);
+  const [imgblurMode, setimgblurMode] = useState(false);
+  chrome.storage.local.get('blur', function(storage) {
+    if (storage.blur != undefined) {
+      setimgblurMode(storage.blur);
+      blurImages(storage.blur);
+    }
+  }) 
+  const [paraMode, setParaMode] = useState(false);
   const firstLoad = useRef(true);
   
   const [word, setWord] = useState('');
@@ -59,6 +68,12 @@ const Popup = () => {
     setSnapshotActive(false);
   }
 
+  function onChangeblurImage(imgBlur:boolean) {
+    setimgblurMode(!imgBlur);
+    blurImages(!imgBlur);
+    chrome.storage.local.set({'blur':!imgBlur});
+    console.log(!imgBlur);
+  }
   const saveInput = (e:any) => {
     e.preventDefault();
     let newWordBank = [...wordBank]; 
@@ -86,12 +101,9 @@ const Popup = () => {
               <h6>Toggle to show/hide</h6>
               <div className="form-buttons">
                 <label htmlFor="censor">Turn on censor</label>
-                <Toggle
-                  id="censor"
-                  defaultChecked
-                  onChange={() => setCensorMode((prev) => !prev)}
-                />{" "}
-                <br />
+                <Toggle id="censor" defaultChecked onChange={()=>setCensorMode((prev)=>!prev)}/> <br/>
+                <label htmlFor="censor">Turn on image blurring</label>
+                <Toggle id="censor" onChange={()=>onChangeblurImage(imgblurMode)} isChecked={imgblurMode} /> <br/>
                 <label htmlFor="astrix">Turn on astrix mode</label>
                 <Toggle
                   id="astrix"
