@@ -23,10 +23,13 @@
     "@atlaskit/motion": "^1.0.3",
     "@atlaskit/theme": "^11.5.0",
     "@atlaskit/tokens": "^0.1.1",
+    "@emotion/cache": "^10.0.29",
+    "@emotion/core": "^10.1.1",
     "jsdom": "^17.0.0",
     "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-shadow": "^19.0.2",
     "styled-components": "^3.4.10"
   },
   "devDependencies": {
