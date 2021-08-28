@@ -12,6 +12,7 @@ import { h500, headingSizes } from "@atlaskit/theme/typography";
 
 import { N200 } from "@atlaskit/theme/colors";
 import { fontSize } from "@atlaskit/theme/constants";
+import blurImages from "./filter/blurImages";
 
 const labelStyles = css({
   fontSize: `${headingSizes.h200.size / fontSize()}em`,
@@ -44,18 +45,31 @@ const Filter = () => {
   const [word, setWord] = useState("");
   const [wordBank, setWordBank] = useState<string[]>([]);
   const [imgblurMode, setimgblurMode] = useState(false);
-  chrome.storage.local.get("blur", function (storage) {
-    if (storage.blur != undefined) {
-      setimgblurMode(storage.blur);
-      blurImages(storage.blur);
-    }
-  });
-  function onChangeblurImage(imgBlur: boolean) {
-    setimgblurMode(!imgBlur);
-    blurImages(!imgBlur);
-    chrome.storage.local.set({ blur: !imgBlur });
-    console.log(!imgBlur);
-  }
+
+  useEffect(() => {
+    chrome.storage.local.get("blur", function (storage) {
+      if (storage.blur != undefined) {
+        setimgblurMode(storage.blur);
+        blurImages(storage.blur);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    chrome.storage.local.set({ blur: imgblurMode });
+    blurImages(imgblurMode);
+  }, [imgblurMode]);
+
+  // function onChangeblurImage(imgBlur: boolean) {
+  //   setimgblurMode(!imgBlur);
+  //   blurImages(!imgBlur);
+  //   chrome.storage.local.set({ blur: !imgBlur });
+  //   console.log(!imgBlur);
+  // }
+
+  const toggleImageBlurring = useCallback(() => {
+    setimgblurMode((prev) => !prev);
+  }, [setimgblurMode]);
 
   const toggleCensorMode = useCallback(() => {
     setCensorMode((prev) => !prev);
@@ -119,21 +133,29 @@ const Filter = () => {
           <label htmlFor="censor" css={labelStyles}>
             Censor words
           </label>
-          <Toggle id="censor" defaultChecked onChange={toggleCensorMode} />
+          <Toggle
+            id="censor"
+            isChecked={censorMode}
+            onChange={toggleCensorMode}
+          />
           <small>Some explanation...</small>
         </div>
         <div css={toggleGroupStyles}>
           <label htmlFor="astrix" css={labelStyles}>
             Astrix mode
           </label>
-          <Toggle id="astrix" onChange={toggleAstrixMode} />
+          <Toggle
+            id="astrix"
+            isChecked={astrixMode}
+            onChange={toggleAstrixMode}
+          />
         </div>
         <div css={toggleGroupStyles}>
           <label htmlFor="censor">Turn on image blurring</label>
           <Toggle
             id="censor"
-            defaultChecked
-            onChange={() => setCensorMode((prev) => !prev)}
+            isChecked={imgblurMode}
+            onChange={toggleImageBlurring}
           />
         </div>
         <div css={toggleGroupStyles}>
