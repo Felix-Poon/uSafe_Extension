@@ -1,7 +1,14 @@
 /* USER INTERFACE WHEN EXTENSION IS CLICKED */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import ReactDOM from "react-dom";
+
+import "@atlaskit/css-reset";
+import { N0, N100 } from "@atlaskit/theme/colors";
+import { e100 } from "@atlaskit/theme/elevation";
+import { borderRadius, gridSize } from "@atlaskit/theme/constants";
+
+import CheckURL from "./safety-guide/checkURL";
 
 const Popup = () => {
   const [count, setCount] = useState(0);
@@ -34,8 +41,26 @@ const Popup = () => {
     });
   };
 
+
+  useLayoutEffect(() => {
+    document.documentElement.style.height = "max-content";
+    document.body.style.background = N100;
+    document.body.style.margin = "0";
+  }, []);
+
+  /* const urlCheck = {
+    CheckURL(currentURL: any)
+  } */
+
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: N0,
+        boxShadow: e100(),
+        borderRadius: borderRadius(),
+        padding: gridSize(),
+      }}
+    >
       <ul style={{ minWidth: "700px" }}>
         <li>Current URL: {currentURL}</li>
         <li>Current Time: {new Date().toLocaleTimeString()}</li>
@@ -47,7 +72,8 @@ const Popup = () => {
         count up
       </button>
       <button onClick={changeBackground}>change background</button>
-    </>
+      {CheckURL(currentURL)}
+    </div>
   );
 };
 
