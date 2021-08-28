@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log("scrape msg")
     console.log(document.body.innerText);
     sendResponse({
-      textBody: document.body.innerText
+      textBody: document.body.innerHTML
     });
   }
   else {
