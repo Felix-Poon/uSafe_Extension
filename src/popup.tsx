@@ -20,7 +20,6 @@ const Popup = () => {
   const [snapshotActive, setSnapshotActive] = useState(true);
   const [censorMode, setCensorMode] = useState(true);
   const [astrixMode, setAstrixMode] = useState(false);
-  const [paraMode, setParaMode] = useState(false);
   const firstLoad = useRef(true);
   
   const [word, setWord] = useState('');
@@ -98,9 +97,6 @@ const Popup = () => {
                   id="astrix"
                   onChange={() => setAstrixMode((prev) => !prev)}
                 />
-                <br />
-                <label htmlFor="paraCensor">Turn on paragraph censorship</label>
-                <Toggle id="paraCensor" onChange={()=>setParaMode((prev) => !prev)}/>
                 <br />
                 <label htmlFor="customCensor">
                   Enter custom word to censor

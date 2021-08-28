@@ -1,5 +1,4 @@
 export default function scrapePage (mode: string, wordBank :string[]) {
-  console.log("scrape.tsx ", wordBank)
   // blur levels
   chrome.tabs.query({currentWindow: true, active: true},
   function(tabs) {
@@ -14,9 +13,10 @@ export default function scrapePage (mode: string, wordBank :string[]) {
       } else if (mode === "astrix") {
         chrome.tabs.sendMessage(tab.id,
           {
-            scrape: "astrix"
+            scrape: "astrix",
+            array: wordBank
           });
-      } else {
+      } else if (mode === "revert") {
         chrome.tabs.sendMessage(tab.id,
           {
             scrape: "revert-filter"

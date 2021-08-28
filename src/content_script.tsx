@@ -40,7 +40,7 @@ const array2 = [
 ];
 
 const censor = (censorMode: string, array: string[]) => {
-  console.log("feed array", array);
+  console.log(censorMode)
   var elements = document.getElementsByTagName("*");
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
@@ -57,9 +57,9 @@ const censor = (censorMode: string, array: string[]) => {
 
             parent?.setAttribute?.("data-original-text", node.nodeValue ?? "");
 
-            if (parent?.tagName === "body") {
-              console.log({ node });
-            }
+            // if (parent?.tagName === "body") {
+            //   console.log({ node });
+            // }
 
             node.nodeValue = text.replace(new RegExp(array[i], "gi"), "***");
           }
@@ -76,21 +76,26 @@ const censor = (censorMode: string, array: string[]) => {
 };
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  console.log("scraping?");
-  if (msg.scrape) {
-    console.log("msg3", msg.array);
+  if (msg.scrape === "revert-filter") {
+    document.querySelectorAll("[data-original-text]").forEach((element) => {
+      element.textContent = (element.textContent ?? "").replace(
+        /\*\*\*/,
+        element.getAttribute("data-original-text") ?? ""
+      );
+      element.removeAttribute("data-original-text");
+    });
+  }
+  else if (msg.scrape === "normal") {
+    
+    // console.log("msg3", msg.array);
     const array = array2.concat(msg.array);
-    console.log("array", array);
+    // console.log("array", array);
     censor(msg.scrape, array);
-    if (msg.scrape === "revert-filter") {
-      document.querySelectorAll("[data-original-text]").forEach((element) => {
-        element.textContent = (element.textContent ?? "").replace(
-          /\*\*\*/,
-          element.getAttribute("data-original-text") ?? ""
-        );
-        element.removeAttribute("data-original-text");
-      });
-    }
+  } else if (msg.scrape === "astrix") {
+    console.log("but im a astrix")
+    const array = array2.concat(msg.array);
+    // console.log("array", array);
+    censor(msg.scrape, array);
   }
 });
 
