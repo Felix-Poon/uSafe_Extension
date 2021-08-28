@@ -22,7 +22,6 @@ const Popup = () => {
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       setCurrentURL(tabs[0].url);
-      /* CheckURL(tabs[0].url) */
     });
   }, []);
 
@@ -42,7 +41,6 @@ const Popup = () => {
       }
     });
   };
-
 
   useLayoutEffect(() => {
     document.documentElement.style.height = "max-content";
@@ -71,7 +69,7 @@ const Popup = () => {
       </button>
       <button onClick={changeBackground}>change background</button>
       <button onClick={displayGuide}>show guide</button>
-      {CheckURL(currentURL)}
+      <CheckURL url={currentURL} />
     </div>
   );
 };
