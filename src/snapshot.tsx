@@ -3,6 +3,7 @@ import Button from "@atlaskit/button";
 import ReactDOM from "react-dom";
 import { consolidateStreamedStyles } from "styled-components";
 import JSZip from "jszip";
+import { AutoDismissFlag, FlagGroup } from "@atlaskit/flag"
 
 interface Screenshot {
   uri: string;
@@ -17,6 +18,7 @@ const Snapshot = () => {
     }
   });
   const [userList, setUserList] = useState<string[]>([]);
+  const [flags, setFlags] = useState<number[]>([]);
 
   function handleChange(e: any, id: any) {
     let newList = [...userList];
@@ -83,9 +85,19 @@ const Snapshot = () => {
           chrome.storage.local.set({ 'screenshots': screenshots});
           setNumScreenshots(screenshots.length);
           console.log(screenshots);
+          
+          // flags
+          const newFlagId = numScreenshots;
+          const newFlags = flags.slice();
+          newFlags.splice(0, 0, newFlagId);
+          setFlags(newFlags);
         });
       });
     });
+  }
+
+  function handleDismiss() {
+    setFlags(flags.slice(1));
   }
 
   const download = (event:any) => {
@@ -125,7 +137,7 @@ const Snapshot = () => {
     });
 
     chrome.storage.local.clear();
-
+    setNumScreenshots(0);
   }
 
   function createTab() {
@@ -163,9 +175,20 @@ const Snapshot = () => {
             <h6>4. Submit report using the following link:</h6>
             <a onClick={redirectLink}>https://www.esafety.gov.au/report</a>
           </div>
-
         </div>
       </form>
+      <FlagGroup onDismissed={handleDismiss}>
+        {flags.map((id) => {
+          return (
+            <AutoDismissFlag 
+              id={id}
+              key={id}
+              icon={<h1>#</h1>}
+              title={`${id+1} Screenshot(s) was taken!`}
+              description="I will disappear in 8 seconds"
+            />);
+        })}
+      </FlagGroup>
     </>
   );
 }
