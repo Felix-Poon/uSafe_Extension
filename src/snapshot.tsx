@@ -36,19 +36,6 @@ const Snapshot = () => {
     document.body.removeChild(link);
   }
 
-  function downloadScreenshots() {
-    chrome.storage.local.get('screenshots', function (result) {
-      let screenshots: string[] = [];
-      if (result.screenshots != undefined) {
-        console.log(result.screenshots);
-        result.screenshots.map((uri: string, index: number) => console.log("index: " + index));
-      }
-      // screenshots.map(uri => downloadScreenshot(uri));
-      chrome.storage.local.clear();
-      setNumScreenshots(0);
-    });
-  }
-
   function screenShot() {
     console.log("screenshot taken");
     chrome.tabs.captureVisibleTab(function (data) {
@@ -91,12 +78,6 @@ const Snapshot = () => {
     });
   }
 
-  // {
-  //       'screenshots': [
-  //         {'id': 'id', 'uri': "sjdhfkjhsf", "text": "text array containing date and url"}
-  //       ]
-  // }
-
   const download = (event:any) => {
     event.preventDefault();
     let text_arr:string[] = [];
@@ -117,7 +98,7 @@ const Snapshot = () => {
           downloadScreenshot(s.uri);
         })
       }
-      
+
       let text = text_arr.join('\n');
       var element = document.createElement('a');
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
