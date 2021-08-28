@@ -2,83 +2,73 @@
 
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import ReactDOM from "react-dom";
+import Button from "@atlaskit/button";
+import CameraIcon from '@atlaskit/icon/glyph/camera';
+import WatchIcon from '@atlaskit/icon/glyph/watch';
+import Snapshot from "./snapshot";
 
-import "@atlaskit/css-reset";
-import { N0, N100 } from "@atlaskit/theme/colors";
-import { e100 } from "@atlaskit/theme/elevation";
-import { borderRadius, gridSize } from "@atlaskit/theme/constants";
 
 import scrapePage from "./filter/scrape";
 import CheckURL from "./safety-guide/checkURL";
 
 const Popup = () => {
-  const [count, setCount] = useState(0);
   const [currentURL, setCurrentURL] = useState<string>();
-
-  useEffect(() => {
-    chrome.browserAction.setBadgeText({ text: count.toString() });
-  }, [count]);
-
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      setCurrentURL(tabs[0].url);
-    });
-  }, []);
-
-  const changeBackground = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const tab = tabs[0];
-      if (tab.id) {
-        chrome.tabs.sendMessage(
-          tab.id,
-          {
-            color: "red",
-          },
-          (msg) => {
-            console.log("result message:", msg);
-          }
-        );
-      }
-    });
-  };
-
+  const [page, setPage] = useState(0);
+  const [snapshotActive, setSnapshotActive] = useState(true);
+  
   const checkProf = () => {
     scrapePage();
   }
-
-  useLayoutEffect(() => {
-    document.documentElement.style.height = "max-content";
-    document.body.style.background = N100;
-    document.body.style.margin = "0";
-  }, []);
+  
+  function click0() {
+    setPage(0);
+    setSnapshotActive(true);
+  }
+  function click1() {
+    setPage(1);
+    setSnapshotActive(false);
+  }
 
   /* const urlCheck = {
     CheckURL(currentURL: any)
   } */
 
   return (
-    <div
-      style={{
-        backgroundColor: N0,
-        boxShadow: e100(),
-        borderRadius: borderRadius(),
-        padding: gridSize(),
-      }}
-    >
-      <ul style={{ minWidth: "700px" }}>
-        <li>Current URL233: {currentURL}</li>
-        <li>Current Time: {new Date().toLocaleTimeString()}</li>
-      </ul>
-      <button
-        onClick={() => setCount(count + 1)}
-        style={{ marginRight: "5px" }}
-      >
-        count up
-      </button>
-      <button onClick={changeBackground}>change background</button>
-      <button onClick={checkProf}>Check profanity</button>
-      {CheckURL(currentURL)}
-    </div>
+    <>
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Space+Grotesk:wght@300&display=swap');
+      </style>
+
+      <div className="extension-container">
+        {page ? (
+          <h1></h1>
+        ) : (
+          <Snapshot />
+        )}
+      </div>
+      <div className="buttons">
+        {snapshotActive ? (
+          <>
+          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" isSelected shouldFitContainer>
+            Snapshot
+          </Button>
+          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" shouldFitContainer>
+            Filter
+          </Button>
+          </>
+        ) : (
+          <>
+          <Button iconBefore={<CameraIcon label="Camera icon" size="small"/>} onClick={click0} className="info-button" shouldFitContainer>
+            Snapshot
+          </Button>
+          <Button iconBefore={<WatchIcon label="Watch icon" size="small"/>} onClick={click1} className="snapshot-button" isSelected shouldFitContainer>
+            Filter
+          </Button>
+          </>
+        )}
+      </div>
+    </>
+  
   );
 };
 

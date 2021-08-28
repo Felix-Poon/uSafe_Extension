@@ -1,0 +1,558 @@
+{
+  "ignored": [
+    "https://www.esafety.gov.au/key-issues/esafety-guide/facey",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/feednoly",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/imgur",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/melon",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/onlyfans",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/skout",
+    "https://www.esafety.gov.au/key-issues/esafety-guide/subway-surfers"
+  ],
+  "entries": {
+    "https://innersloth.com/gameAmongUs.php": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/among-us",
+      "websiteUrl": "https://innersloth.com/gameAmongUs.php",
+      "title": "Among Us"
+    },
+    "https://zoom.us/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/zoom",
+      "websiteUrl": "https://zoom.us/",
+      "title": "Zoom"
+    },
+    "https://houseparty.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/houseparty",
+      "websiteUrl": "https://houseparty.com/",
+      "title": "Houseparty"
+    },
+    "https://www.tiktok.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/tiktok",
+      "websiteUrl": "https://www.tiktok.com/",
+      "title": "TikTok (formerly Musical.ly)"
+    },
+    "https://omegle.fun/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/omegle",
+      "websiteUrl": "https://omegle.fun/",
+      "title": "Omegle"
+    },
+    "https://www.snapchat.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/snapchat",
+      "websiteUrl": "https://www.snapchat.com/",
+      "title": "Snapchat"
+    },
+    "https://www.instagram.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/instagram",
+      "websiteUrl": "https://www.instagram.com/",
+      "title": "Instagram"
+    },
+    "https://www.facebook.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/facebook",
+      "websiteUrl": "https://www.facebook.com/",
+      "title": "Facebook"
+    },
+    "https://www.roblox.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/roblox",
+      "websiteUrl": "https://www.roblox.com/",
+      "title": "Roblox"
+    },
+    "https://minecraft.net/en-us/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/minecraft",
+      "websiteUrl": "https://minecraft.net/en-us/",
+      "title": "Minecraft"
+    },
+    "https://www.epicgames.com/fortnite/en-US/home": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/fortnite-battle-royale",
+      "websiteUrl": "https://www.epicgames.com/fortnite/en-US/home",
+      "title": "Fortnite Battle Royale"
+    },
+    "https://www.adobe.com/products/adobeconnect.html": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/adobe-connect",
+      "websiteUrl": "https://www.adobe.com/products/adobeconnect.html",
+      "title": "Adobe Connect"
+    },
+    "https://corp.airg.com/airg/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/airg",
+      "websiteUrl": "https://corp.airg.com/airg/",
+      "title": "Air G"
+    },
+    "http://observint.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/alibi-witness-20",
+      "websiteUrl": "http://observint.com/",
+      "title": "ALIBI Witness 2.0"
+    },
+    "https://www.animaljam.com/home": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/animal-jam",
+      "websiteUrl": "https://www.animaljam.com/home",
+      "title": "Animal Jam"
+    },
+    "https://www.ea.com/en-gb/games/anthem": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/anthem",
+      "websiteUrl": "https://www.ea.com/en-gb/games/anthem",
+      "title": "Anthem"
+    },
+    "https://www.ea.com/en-gb/games/apex-legends": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/apex-legends",
+      "websiteUrl": "https://www.ea.com/en-gb/games/apex-legends",
+      "title": "Apex Legends"
+    },
+    "https://ask.fm/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/askfm",
+      "websiteUrl": "https://ask.fm/",
+      "title": "ASKfm"
+    },
+    "https://www.bing.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/bing",
+      "websiteUrl": "https://www.bing.com/",
+      "title": "Bing"
+    },
+    "https://www.blackboard.com/teaching-learning/collaboration-web-conferencing/blackboard-collaborate": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/blackboard-collaborate",
+      "websiteUrl": "https://www.blackboard.com/teaching-learning/collaboration-web-conferencing/blackboard-collaborate",
+      "title": "Blackboard Collaborate"
+    },
+    "https://www.blogger.com/about/?r=2": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/blogger",
+      "websiteUrl": "https://www.blogger.com/about/?r=2",
+      "title": "Blogger"
+    },
+    "https://borderlands.com/en-US/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/borderlands-3",
+      "websiteUrl": "https://borderlands.com/en-US/",
+      "title": "Borderlands 3"
+    },
+    "https://bumble.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/bumble",
+      "websiteUrl": "https://bumble.com/",
+      "title": "Bumble"
+    },
+    "https://www.callofduty.com/au/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/call-of-duty",
+      "websiteUrl": "https://www.callofduty.com/au/en/",
+      "title": "Call of Duty"
+    },
+    "https://chatruletka.com/#app": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/chatruletka",
+      "websiteUrl": "https://chatruletka.com/#app",
+      "title": "Chatruletka"
+    },
+    "https://supercell.com/en/games/clashofclans/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/clash-of-clans",
+      "websiteUrl": "https://supercell.com/en/games/clashofclans/",
+      "title": "Clash of Clans"
+    },
+    "https://clashroyale.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/clash-royale",
+      "websiteUrl": "https://clashroyale.com/",
+      "title": "Clash Royale"
+    },
+    "https://store.bandainamcoent.eu/eu/product/470756/code-vein-pc-download": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/code-vein",
+      "websiteUrl": "https://store.bandainamcoent.eu/eu/product/470756/code-vein-pc-download",
+      "title": "Code Vein"
+    },
+    "https://blog.counter-strike.net/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/counter-strike",
+      "websiteUrl": "https://blog.counter-strike.net/",
+      "title": "Counter-Strike"
+    },
+    "https://www.zynga.com/games/csr-racing-2/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/csr-racing-2",
+      "websiteUrl": "https://www.zynga.com/games/csr-racing-2/",
+      "title": "CSR Racing 2"
+    },
+    "https://www.curseforge.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/curseforge",
+      "websiteUrl": "https://www.curseforge.com/",
+      "title": "CurseForge"
+    },
+    "https://discordapp.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/discord",
+      "websiteUrl": "https://discordapp.com/",
+      "title": "Discord"
+    },
+    "https://ddlc.moe/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/doki-doki-literature-club",
+      "websiteUrl": "https://ddlc.moe/",
+      "title": "Doki Doki Literature Club!"
+    },
+    "https://store.steampowered.com/app/570/Dota_2/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/dota-2",
+      "websiteUrl": "https://store.steampowered.com/app/570/Dota_2/",
+      "title": "Dota 2"
+    },
+    "https://dubsmash.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/dubsmash",
+      "websiteUrl": "https://dubsmash.com/",
+      "title": "Dubsmash"
+    },
+    "https://new.edmodo.com/?go2url=%2Fhome": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/edmodo",
+      "websiteUrl": "https://new.edmodo.com/?go2url=%2Fhome",
+      "title": "Edmodo"
+    },
+    "https://www.episodeinteractive.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/episode",
+      "websiteUrl": "https://www.episodeinteractive.com/",
+      "title": "Episode"
+    },
+    "https://www.messenger.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/facebook-messenger",
+      "websiteUrl": "https://www.messenger.com/",
+      "title": "Facebook Messenger"
+    },
+    "https://support.apple.com/en-au/HT204380": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/facetime",
+      "websiteUrl": "https://support.apple.com/en-au/HT204380",
+      "title": "FaceTime"
+    },
+    "https://www.ea.com/en-gb/games/fifa/fifa-20": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/fifa-soccer",
+      "websiteUrl": "https://www.ea.com/en-gb/games/fifa/fifa-20",
+      "title": "FIFA Soccer "
+    },
+    "https://flickr.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/flickr",
+      "websiteUrl": "https://flickr.com/",
+      "title": "Flickr"
+    },
+    "https://foursquare.com/city-guide": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/foursquare-city-guide",
+      "websiteUrl": "https://foursquare.com/city-guide",
+      "title": "Foursquare City Guide"
+    },
+    "https://www.swarmapp.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/foursquare-swarm",
+      "websiteUrl": "https://www.swarmapp.com/",
+      "title": "Foursquare Swarm"
+    },
+    "http://www.friv.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/friv",
+      "websiteUrl": "http://www.friv.com/",
+      "title": "Friv"
+    },
+    "https://www.google.com.au/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/google",
+      "websiteUrl": "https://www.google.com.au/",
+      "title": "Google"
+    },
+    "https://hangouts.google.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/google-hangouts/meet",
+      "websiteUrl": "https://hangouts.google.com/",
+      "title": "Google Hangouts / Meet"
+    },
+    "https://www.gotomeeting.com/en-au/webinar": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/gotowebinar",
+      "websiteUrl": "https://www.gotomeeting.com/en-au/webinar",
+      "title": "GoToWebinar"
+    },
+    "https://www.rockstargames.com/games/info/V": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/grand-theft-auto-v-gtav",
+      "websiteUrl": "https://www.rockstargames.com/games/info/V",
+      "title": "Grand Theft Auto V (GTAV)"
+    },
+    "https://www.grindr.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/grindr",
+      "websiteUrl": "https://www.grindr.com/",
+      "title": "Grindr"
+    },
+    "https://www.halowaypoint.com/en-gb": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/halo",
+      "websiteUrl": "https://www.halowaypoint.com/en-gb",
+      "title": "Halo"
+    },
+    "https://www.happn.com/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/happn",
+      "websiteUrl": "https://www.happn.com/en/",
+      "title": "happn"
+    },
+    "https://www.hike.in/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/hike-sticker-chat-hikemoji",
+      "websiteUrl": "https://www.hike.in/",
+      "title": "Hike Sticker Chat - HikeMoji"
+    },
+    "https://hoop.photo/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/hoop",
+      "websiteUrl": "https://hoop.photo/",
+      "title": "Hoop"
+    },
+    "https://icq.com/mac/en": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/icq",
+      "websiteUrl": "https://icq.com/mac/en",
+      "title": "ICQ"
+    },
+    "https://www.kidschat.net/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/kids-chat",
+      "websiteUrl": "https://www.kidschat.net/",
+      "title": "Kids Chat"
+    },
+    "https://www.kik.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/kik",
+      "websiteUrl": "https://www.kik.com/",
+      "title": "Kik"
+    },
+    "https://na.leagueoflegends.com/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/league-legends-lol",
+      "websiteUrl": "https://na.leagueoflegends.com/en/",
+      "title": "League of Legends (LoL)"
+    },
+    "https://www.lego.com/en-au/life": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/lego-life",
+      "websiteUrl": "https://www.lego.com/en-au/life",
+      "title": "LEGO Life"
+    },
+    "https://like.video/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/like",
+      "websiteUrl": "https://like.video/",
+      "title": "Likee"
+    },
+    "https://www.linkedin.com/?trk=nav_logo": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/linkedin",
+      "websiteUrl": "https://www.linkedin.com/?trk=nav_logo",
+      "title": "LinkedIn"
+    },
+    "https://www.liveme.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/liveme",
+      "websiteUrl": "https://www.liveme.com/",
+      "title": "LiveMe"
+    },
+    "https://messengerkids.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/messenger-kids",
+      "websiteUrl": "https://messengerkids.com/",
+      "title": "Messenger Kids"
+    },
+    "https://products.office.com/en-au/microsoft-teams/group-chat-software": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/microsoft-teams",
+      "websiteUrl": "https://products.office.com/en-au/microsoft-teams/group-chat-software",
+      "title": "Microsoft Teams"
+    },
+    "https://www.miniclip.com/games/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/miniclip",
+      "websiteUrl": "https://www.miniclip.com/games/en/",
+      "title": "Miniclip"
+    },
+    "http://www.moshimonsters.com/home/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/moshi-monsters",
+      "websiteUrl": "http://www.moshimonsters.com/home/",
+      "title": "Moshi Monsters"
+    },
+    "https://www.mylol.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/mylol",
+      "websiteUrl": "https://www.mylol.com/",
+      "title": "MyLOL"
+    },
+    "https://myspace.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/myspace",
+      "websiteUrl": "https://myspace.com/",
+      "title": "Myspace"
+    },
+    "https://nba.2k.com/en-US/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/nba-2k20",
+      "websiteUrl": "https://nba.2k.com/en-US/",
+      "title": "NBA 2K20"
+    },
+    "https://www.nintendo.com.au/nintendo-switch": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/nintendo-switch",
+      "websiteUrl": "https://www.nintendo.com.au/nintendo-switch",
+      "title": "Nintendo Switch"
+    },
+    "https://overwatch2.playoverwatch.com/en-gb/explore": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/overwatch",
+      "websiteUrl": "https://overwatch2.playoverwatch.com/en-gb/explore",
+      "title": "Overwatch"
+    },
+    "https://www.peeks.com/channel/group": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/peeks-social",
+      "websiteUrl": "https://www.peeks.com/channel/group",
+      "title": "Peeks Social"
+    },
+    "https://www.periscope.tv/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/periscope",
+      "websiteUrl": "https://www.periscope.tv/",
+      "title": "Periscope"
+    },
+    "https://photoroulette.app/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/photo-roulette",
+      "websiteUrl": "https://photoroulette.app/",
+      "title": "Photo Roulette"
+    },
+    "https://www.playstation.com/en-au/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/playstation-network",
+      "websiteUrl": "https://www.playstation.com/en-au/",
+      "title": "Playstation Network"
+    },
+    "https://pokemongolive.com/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/pokemon-go",
+      "websiteUrl": "https://pokemongolive.com/en/",
+      "title": "Pokémon Go"
+    },
+    "http://qooh.me/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/qoohme",
+      "websiteUrl": "http://qooh.me/",
+      "title": "Qooh.me"
+    },
+    "https://www.reddit.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/reddit",
+      "websiteUrl": "https://www.reddit.com/",
+      "title": "Reddit"
+    },
+    "https://www.rocketleague.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/rocket-league-0",
+      "websiteUrl": "https://www.rocketleague.com/",
+      "title": "Rocket League"
+    },
+    "https://scopely.com/game/scr-go-mobile/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/scrabble-go",
+      "websiteUrl": "https://scopely.com/game/scr-go-mobile/",
+      "title": "Scrabble Go"
+    },
+    "https://secondlife.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/second-life",
+      "websiteUrl": "https://secondlife.com/",
+      "title": "Second Life"
+    },
+    "https://web.seesaw.me/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/seesaw",
+      "websiteUrl": "https://web.seesaw.me/",
+      "title": "Seesaw"
+    },
+    "https://signal.org/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/signal",
+      "websiteUrl": "https://signal.org/",
+      "title": "Signal"
+    },
+    "https://www.skype.com/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/skype",
+      "websiteUrl": "https://www.skype.com/en/",
+      "title": "Skype"
+    },
+    "https://www.spotafriend.co/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/spotafriend",
+      "websiteUrl": "https://www.spotafriend.co/",
+      "title": "Spotafriend"
+    },
+    "https://store.steampowered.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/steam",
+      "websiteUrl": "https://store.steampowered.com/",
+      "title": "Steam"
+    },
+    "https://www.tango.me/live/hottest": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/tango",
+      "websiteUrl": "https://www.tango.me/live/hottest",
+      "title": "Tango"
+    },
+    "https://telegram.org/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/telegram",
+      "websiteUrl": "https://telegram.org/",
+      "title": "Telegram"
+    },
+    "https://info.tellonym.me/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/tellonym",
+      "websiteUrl": "https://info.tellonym.me/",
+      "title": "Tellonym"
+    },
+    "https://tinder.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/tinder",
+      "websiteUrl": "https://tinder.com/",
+      "title": "Tinder"
+    },
+    "https://www.tumblr.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/tumblr",
+      "websiteUrl": "https://www.tumblr.com/",
+      "title": "Tumblr"
+    },
+    "https://www.twitch.tv/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/twitch",
+      "websiteUrl": "https://www.twitch.tv/",
+      "title": "Twitch"
+    },
+    "https://twitter.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/twitter",
+      "websiteUrl": "https://twitter.com/",
+      "title": "Twitter"
+    },
+    "https://vimeo.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/vimeo",
+      "websiteUrl": "https://vimeo.com/",
+      "title": "Vimeo"
+    },
+    "https://www.wattpad.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/wattpad",
+      "websiteUrl": "https://www.wattpad.com/",
+      "title": "Wattpad"
+    },
+    "https://www.webex.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/webex",
+      "websiteUrl": "https://www.webex.com/",
+      "title": "WebEx"
+    },
+    "https://www.wechat.com/en/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/wechat",
+      "websiteUrl": "https://www.wechat.com/en/",
+      "title": "WeChat"
+    },
+    "https://www.whatsapp.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/whatsapp",
+      "websiteUrl": "https://www.whatsapp.com/",
+      "title": "WhatsApp"
+    },
+    "http://whisper.sh/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/whisper",
+      "websiteUrl": "http://whisper.sh/",
+      "title": "Whisper"
+    },
+    "https://wickr.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/wickr",
+      "websiteUrl": "https://wickr.com/",
+      "title": "Wickr"
+    },
+    "https://www.zynga.com/games/words-with-friends-2/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/words-friends-2",
+      "websiteUrl": "https://www.zynga.com/games/words-with-friends-2/",
+      "title": "Words With Friends 2"
+    },
+    "https://worldofwarcraft.com/en-us/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/world-warcraft-wow",
+      "websiteUrl": "https://worldofwarcraft.com/en-us/",
+      "title": "World of Warcraft (WoW)"
+    },
+    "https://www.xbox.com/en-AU/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/xbox-live",
+      "websiteUrl": "https://www.xbox.com/en-AU/",
+      "title": "Xbox Live"
+    },
+    "https://onyolo.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/yolo",
+      "websiteUrl": "https://onyolo.com/",
+      "title": "YOLO"
+    },
+    "https://www.younow.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/younow",
+      "websiteUrl": "https://www.younow.com/",
+      "title": "YouNow"
+    },
+    "https://www.youtube.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/youtube",
+      "websiteUrl": "https://www.youtube.com/",
+      "title": "YouTube"
+    },
+    "https://kids.youtube.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/youtube-kids",
+      "websiteUrl": "https://kids.youtube.com/",
+      "title": "YouTube Kids"
+    },
+    "https://www.youtube.com/premium": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/youtube-premium",
+      "websiteUrl": "https://www.youtube.com/premium",
+      "title": "YouTube Premium"
+    },
+    "https://yubo.live/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/yubo",
+      "websiteUrl": "https://yubo.live/",
+      "title": "YUBO"
+    },
+    "https://www.zoho.com/": {
+      "guideUrl": "https://www.esafety.gov.au/key-issues/esafety-guide/zoho",
+      "websiteUrl": "https://www.zoho.com/",
+      "title": "Zoho"
+    }
+  }
+}
