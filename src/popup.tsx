@@ -21,6 +21,7 @@ const Popup = () => {
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       setCurrentURL(tabs[0].url);
+      CheckURL(tabs[0].url)
     });
   }, []);
 
