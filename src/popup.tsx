@@ -1,6 +1,6 @@
 /* USER INTERFACE WHEN EXTENSION IS CLICKED */
 
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import Button from "@atlaskit/button";
 import CameraIcon from "@atlaskit/icon/glyph/camera";
@@ -18,24 +18,38 @@ const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
   const [snapshotActive, setSnapshotActive] = useState(true);
-  const [censorMode, setCensorMode] = useState(false);
+  const [censorMode, setCensorMode] = useState(true);
   const [astrixMode, setAstrixMode] = useState(false);
+  const [paraMode, setParaMode] = useState(false);
+  const firstLoad = useRef(true);
+  
+  const [word, setWord] = useState('');
+  const [wordBank, setWordBank] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(wordBank)
+    scrapePage("censor", wordBank);
+  }, [wordBank])
 
   useEffect(() => {
     if (censorMode === true) {
-      scrapePage();
+      scrapePage("censor", wordBank);
+    } else {
+      scrapePage("revert", wordBank);
     }
   }, [censorMode]);
 
   useEffect(() => {
-    if (astrixMode === true) {
-      scrapePage();
+    if (firstLoad.current) {
+      firstLoad.current = false
+    } else {
+      if (astrixMode === true) {
+        scrapePage("astrix", wordBank);
+      } else {
+        scrapePage("revert", wordBank)
+      }
     }
   }, [astrixMode]);
-
-  const checkProf = () => {
-    scrapePage();
-  };
 
   function click0() {
     setPage(0);
@@ -46,10 +60,16 @@ const Popup = () => {
     setSnapshotActive(false);
   }
 
+  const saveInput = (e:any) => {
+    e.preventDefault();
+    let newWordBank = [...wordBank]; 
+    newWordBank.push(word);
+    setWordBank(newWordBank);
+    setWord("");
+  }
+  
   const revert = () => {
-    chrome.tabs.query({ active: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id!, "revert-filter");
-    });
+    setWordBank([]);
   };
 
   return (
@@ -62,7 +82,7 @@ const Popup = () => {
       <div className="extension-container">
         {page ? (
           <>
-            <form className="form">
+          <form className="form" onSubmit={saveInput}>
               <h5>Filter away profanity and negativity</h5>
               <h6>Toggle to show/hide</h6>
               <div className="form-buttons">
@@ -80,14 +100,14 @@ const Popup = () => {
                 />
                 <br />
                 <label htmlFor="paraCensor">Turn on paragraph censorship</label>
-                <Toggle id="paraCensor" defaultChecked />
+                <Toggle id="paraCensor" onChange={()=>setParaMode((prev) => !prev)}/>
                 <br />
                 <label htmlFor="customCensor">
                   Enter custom word to censor
                 </label>
-                <Textfield id="customCensor" placeholder="Enter word" />
+                <input id="customCensor" value={word} onChange={(e) => setWord(e.target.value)}/>
                 <br />
-                <Button appearance="primary" type="button">
+                <Button appearance="primary" type="submit">
                   Add word
                 </Button>
               </div>
