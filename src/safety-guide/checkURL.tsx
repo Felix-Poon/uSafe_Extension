@@ -1,7 +1,8 @@
 import React, {useState} from "react";
+// LOAD in info
 
 function CheckURL(url: any) {
-  const [available, setAvailable] = useState(false)
+  const [available, setAvailable] = useState(true)
   let r;
   if (url !== undefined) {
     // Do URL checks/formatting/splitting here
@@ -24,7 +25,7 @@ function CheckURL(url: any) {
   return (
     <>
       {available && guide}
-      <p>{r}</p>
+      <p>Checking {r}</p>
     </>
   );
 }

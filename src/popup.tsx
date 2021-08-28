@@ -48,10 +48,6 @@ const Popup = () => {
     document.body.style.margin = "0";
   }, []);
 
-  /* const urlCheck = {
-    CheckURL(currentURL: any)
-  } */
-
   return (
     <div
       style={{
