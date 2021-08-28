@@ -9,9 +9,48 @@
   flex-direction:row;
   align-items:center;
   justify-content:space-evenly;
-  font-family:'Helvetica','Hind Siliguri';
+  font-family:'Helvetica';
 }
 
 .buttons button {
   min-width:100px;
+}
+
+.form {
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+}
+
+.form-buttons {
+  font-family:'Space Grotesk';
+}
+
+.form-buttons button {
+  margin-bottom:10px;
+  color:white !important;
+}
+
+.form-buttons button:hover {
+  color:white !important;
+}
+
+.form h5, .form h6 {
+  font-family:'Space Grotesk';
+  margin: 0;
+}
+
+.form h5 {
+  font-size:14px;
+  margin-top:10px;
+}
+
+.form h6 {
+  margin-bottom:10px;
+  font-size:10px;
+  color:red;
+}
+
+.form-input input {
+  margin-bottom:10px;
 }

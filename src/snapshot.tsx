@@ -4,6 +4,17 @@ import ReactDOM from "react-dom";
 import { consolidateStreamedStyles } from "styled-components";
 
 const Snapshot = () =>{
+    const [userList, setUserList] = useState<string[]>([]);
+
+    function handleChange(e:any, id:any) {
+      let newList = [...userList];
+      newList[id] = e.target.value;
+      setUserList(newList);
+    }
+
+    function addFormFields() {
+      setUserList([...userList, ""]);
+    }
 
     function downloadScreenshot(data : string) {
         const link = document.createElement("a");
@@ -45,6 +56,9 @@ const Snapshot = () =>{
           ("0" + date.getUTCSeconds()).slice(-2);
         text_arr.push(dateStr);
 
+        let users = userList.join(', ');
+        text_arr.push(users);
+
         let text = text_arr.join('\n');
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -58,15 +72,26 @@ const Snapshot = () =>{
         document.body.removeChild(element);  
 
      });
-
     }
     
 
     
     return (
         <>
-            <Button appearance="danger" onClick={screenShot}>Take a screenshot!</Button>
-            <h1>snapshot insides</h1>
+
+          <form onSubmit={screenShot} className="form">
+            <h5>Download evidence of online harrassment.</h5>
+            <h6>Add the names of users involved. Current date and screenshot will be downloaded automatically.</h6>
+            <div className="form-input">
+              {userList.map((e, id) => (
+                  <input type="text" onChange={e => handleChange(e, id)} />
+              ))}
+            </div>
+            <div className="form-buttons">
+              <Button appearance="primary" type="button" onClick={() => addFormFields()}>Add user</Button> <br/>
+              <Button appearance="warning" type="submit">Download</Button>
+            </div>
+          </form>
         </>
     );
 }
