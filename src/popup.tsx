@@ -19,7 +19,8 @@ const Popup = () => {
   const [currentURL, setCurrentURL] = useState<string>();
   const [page, setPage] = useState(0);
   const [snapshotActive, setSnapshotActive] = useState(true);
-  const [censorMode, setCensorMode] = useState(true)
+  const [censorMode, setCensorMode] = useState(false);
+  const [astrixMode, setAstrixMode] = useState(false);
   
   
   useEffect(() => {
@@ -27,6 +28,12 @@ const Popup = () => {
       scrapePage();
     }
   },[censorMode])
+
+  useEffect(() => {
+    if(astrixMode === true) {
+      scrapePage();
+    }
+  },[astrixMode])
   
   const checkProf = () => {
     scrapePage();
@@ -57,7 +64,7 @@ const Popup = () => {
                 <label htmlFor="censor">Turn on censor</label>
                 <Toggle id="censor" defaultChecked onChange={()=>setCensorMode((prev)=>!prev)}/> <br/>
                 <label htmlFor="astrix">Turn on astrix mode</label>
-                <Toggle id="astrix" defaultChecked/><br/>
+                <Toggle id="astrix" onChange={()=>setAstrixMode((prev)=>!prev)}/><br/>
                 <label htmlFor="paraCensor">Turn on paragraph censorship</label>
                 <Toggle id="paraCensor" defaultChecked/><br/>
                 <label htmlFor="customCensor">Enter custom word to censor</label>
