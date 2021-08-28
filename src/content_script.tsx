@@ -1,5 +1,21 @@
 import "./safety-guide/content_script";
 
+chrome.storage.local.get('blur', function(storage) {
+  if (storage.blur != undefined) {
+    const imgs = document.getElementsByTagName("img");
+    if (storage.blur) {
+      for(var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i]);
+        imgs[i].style.filter = 'blur(3px)';
+      }  
+    } else {
+      for(var i = 0; i < imgs.length; i++) {
+        imgs[i].style.filter = 'blur(0px)';
+      }
+    }
+  }
+}) 
+
 const array = ['Paris', 'France', 'Europe', 'CSS'];
 
 
@@ -42,7 +58,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       }
   } else if (msg.blur != undefined) {
     const imgs = document.getElementsByTagName("img");
-    if (!msg.blur) {
+    if (msg.blur) {
       for(var i = 0; i < imgs.length; i++) {
         console.log(imgs[i]);
         imgs[i].style.filter = 'blur(3px)';
@@ -52,6 +68,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         imgs[i].style.filter = 'blur(0px)';
       }
     }
+    sendResponse("Color message is none.");
   } else {
     sendResponse("Color message is none.");
   }
