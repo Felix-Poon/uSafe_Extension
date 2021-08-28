@@ -5,11 +5,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     sendResponse("Change colorr to " + msg.color);
   } 
   else if (msg.scrape) {
-    console.log("scrape msg")
-    console.log(document.body.innerText);
-    sendResponse({
-      textBody: document.body.innerHTML
-    });
+      document.body.innerHTML = document.body.innerHTML.replace(/Google/gi, "replacement string");
   }
   else {
     sendResponse("Color message is none.");
